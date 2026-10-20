@@ -1,0 +1,579 @@
+# Kermit Web game load audit
+
+Audited **559** unique games listed by the site.
+
+- Structurally loadable: **153**
+- Needs runtime/network check: **406**
+- Broken: **0**
+
+Structurally loadable means the game file and its statically referenced local dependencies exist. It does not prove that gameplay starts. Needs runtime/network check means the game uses remote resources and cannot be confirmed by an offline file audit.
+
+## Broken games
+
+| Game | File | Problem | Missing dependencies |
+|---|---|---|---|
+
+## Games requiring a runtime/network check
+
+- 007: Nightfire - clnightfire.html
+- 1 on 1 Soccer - cl1on1soccer.html
+- 10 Bullets - cl10bullets.html
+- 10 More Bullets - cl10morebullets.html
+- 12 Mini Battles - cl12minibattles.html
+- 1v1 Tennis - cl1v1tennis.html
+- 1v1LOL - cl1v1lol.html
+- 2048 - cl2048.html
+- 2048: Cupcakes - cl2048cupcakes.html
+- 2D Shooting - cl2Dshooting.html
+- 3 Dash - cl3dash.html
+- 3 Pandas - cl3pandas.html
+- 3 Pandas Brazil - cl3pandasbrazil.html
+- 3 Pandas Fantasy - cl3pandasfantasy.html
+- 3 Pandas Japan - cl3pandasjapan.html
+- 3 Pandas Night - cl3pandasnight.html
+- 3 Slices 2 - cl3slices2.html
+- 40x Escape - cl40xescape.html
+- 4th and Goal - cl4thandgoal.html
+- 60 Seconds Burger Run - cl60secondsburgerrun.html
+- 60 Seconds Santa Run - cl60secondssantarun.html
+- 8 Ball Classic - cl8ballclassic.html
+- 8 Ball Pool - cl8ballpool.html
+- 9007199254740992 - cl9007199254740992.html
+- 99 Balls - cl99balls.html
+- 99 Nights ITF - 99nightsitf.html
+- A Dance of Fire and Ice - A Dance of Fire and Ice.html
+- Ace Gangster Taxi - clacegangstertaxi.html
+- Achievement Unlocked - clachievementunlocked.html
+- Achievement Unlocked 2 - clachievmentunlocked2.html
+- Achievement Unlocked 3 - clachievmentunlocked3.html
+- Achillies - clachillies.html
+- Achillies 2 - clachillies2.html
+- Andy's Apple Farm - Andy_s Apple Farm.html
+- Angsta Bean 2 - clgangstabean2.html
+- Avalanche - clavalanche.html
+- Awesome Pirates - clAwesomePirates.html
+- Awesome Planes - clawesomeplanes.html
+- Awesome Tanks - clawesometanks.html
+- Awesome Tanks 2 - clawesometanks2.html
+- Baby Chicco Adventure - clbabychiccoadventure.html
+- Baby Kaizo - clbabykaizo.html
+- Backrooms - clbackrooms.html
+- Backrooms 2D - clbackrooms2D.html
+- Backyard Baseball - clbackyardbaseball.html
+- Backyard Baseball '09 - clbackyardbaseball09.html
+- Backyard Baseball '10 - clbackyardbaseball10.html
+- Bad Ice Cream - clbadicecream.html
+- Bad Piggies - badpiggies.html
+- Bad Time Simulator - clbadtimesimulator.html
+- Balatro - balatro.html
+- Bandit Gunslingers - clbanditgunslingers.html
+- Banjo Kazooie - clbanjokazooie.html
+- Banjo Tooie - clbanjotooie.html
+- Bank Robbery 2 - clbankrobbery2.html
+- Basket Bros - clbasketbros.html
+- Basket Random - Basket Random.html
+- Basket Slam Dunk 2 - clbasketslamdunk2.html
+- Basketball Stars - clbasketballstars.html
+- Battle Karts - clbattlekarts.html
+- Battle Sim - clbattlesim.html
+- Binding of Isaac: Wrath of the Lamb - Binding of Issac_ Wrath of the Lamb.html
+- Build a Big Army - Build a Big Army.html
+- Cactus McCoy - clcactusmccoy.html
+- Cactus McCoy 2 - clcactusmccoy2.html
+- Camouflage and Sniper - Camouflage and Sniper.html
+- Candy Crush - Candy Crush.html
+- Car Eats Car 2 Deluxe - clcareatscar2deluxe.html
+- Cat Mario - clcatmario.html
+- Chaos Faction 2 - clchaosfaction2.html
+- Checkers - clcheckers.html
+- Chibi Knight - clchibiknight.html
+- Chuzzle - clchuzzle.html
+- Civiballs - clciviballs.html
+- Civiballs 2 - clciviballs2.html
+- Clear Vision - clclearvision.html
+- Clear Vision 2 - clclearvision2.html
+- Clear Vision 3 - clclearvision3.html
+- Clear Vision 4 - clclearvision4.html
+- Clear Vision 5 - clclearvision5.html
+- Clubby The Seal - clclubbytheseal.html
+- Codename Gordon - clcodenamegordon.html
+- Contra 3 - clcontra3.html
+- Cover Orange - clcoverorange.html
+- Cover Orange 2 - clcoverorange2.html
+- Cover Orange: Journey Gangsters - clcoverorangejourneygangsters.html
+- Cover Orange: Journey Knights - clcoverorangejourneyknights.html
+- Cover Orange: Journey Pirates - clcoverorangejourneypirates.html
+- Cover Orange: Journey Space - clcoverorangejourneyspace.html
+- Cover Orange: Players Pack - clcoverorangeplayerspack.html
+- Cover Orange: Players Pack 2 - clcoverorangeplayerspack2.html
+- Cover Orange: Players Pack 3 - clcoverorangeplayerspack3.html
+- Crazy Cattle 3D - clcrazycattle3d.html
+- Crazy Frog Racer - clcrazyfrogracer.html
+- Creeper World 2 - clcreeperworld2.html
+- Crunchball 3000 - clcrunchball3000.html
+- Curveball - clcurveball.html
+- Deltarune - DELTARUNE.html
+- Dragon Ball Z: The Legacy of Goku - clLegacyOfGoku.html
+- Earn to Die - clearntodie.html
+- Earn to Die 2 - clearntodie2.html
+- Earth Taken - clearthtaken.html
+- Earth Taken 2 - clearthtaken2.html
+- Earth Taken 3 - clearthtaken3.html
+- Effing Hail - cleffinghail.html
+- Effing Machines - cleffingmachines.html
+- Effing Worms - cleffingworms.html
+- Effing Zombies - cleffingzombies.html
+- Electric Man 2 - clelectricman2.html
+- Endless War 4 - clendlesswar4.html
+- Endless War 5 - clendlesswar5wow.html
+- Endless War 7 - clendlesswar7.html
+- Epic Battle Fantasy 5 - clepicbattlefantasy5.html
+- Escape Road 2 - clescaperoad-2.html
+- Excite Bike 64 - clexcitebike64.html
+- Factory Balls - clfactoryballs.html
+- Factory Balls 2 - clfactoryballs2.html
+- Factory Balls 3 - clfactoryballs3.html
+- Factory Balls 4 - clfactoryballs4.html
+- Fairy Tail VS. One Piece - clfairytalevsonepiece.html
+- Fancy Pants Adventure - clfancypantsadventure.html
+- Fancy Pants Adventure 2 - clfancypantsadventure2.html
+- Fancy Pants Adventure 3 - clfancypantsadventure3.html
+- Fancy Snow Boarding - clfancysnowboarding.html
+- Fatty Genius - clfattygenius.html
+- Feed Us - clfeedus.html
+- Feed Us 2 - clfeedus2.html
+- Feed Us 3 - clfeedus3.html
+- Feed Us 4 - clfeedus4.html
+- Feed Us 5 - clfeedus5.html
+- FIFA99 - clFIFA99.html
+- Final Fantacy Sonic 5 - clFFsonic5.html
+- Final Fantasy Sonic - clFFsonic1.html
+- Final Fantasy Sonic 2 - clFFsonic2.html
+- Final Fantasy Sonic 3 - clFFsonic3.html
+- Final Fantasy Sonic 4 - clFFsonic4.html
+- Final Fantasy Sonic 6 - clFFsonic61.html
+- Final Ninja - clfinalninja.html
+- Fire Boy and Water Girl - clfireboyandwatergirl.html
+- Five Nights at Baldi's REDONE - clfivenightsatbaldisredone.html
+- Flappy Bird - clflappybird.html
+- Floodrunner - clfloodrunner.html
+- Floodrunner 2 - clfloodrunner2.html
+- Floodrunner 4 - clfloodrunner4.html
+- Free Rider - clfreerider.html
+- Free Rider 2 - clfreerider2.html
+- Free Rider 3 - clfreerider3.html
+- F-ZERO X - clfzerox.html
+- Gacha Verse - clgachaverse.html
+- Gangsta Bean - clgangstabean.html
+- Gangster Bros - clgangsterbros.html
+- Get to the Top although there is No Top - clGettothetopalthoughthereisnotop.html
+- Glover - clglover.html
+- Gold Miner - clgoldminer.html
+- Golden Eye 007 - clgoldeneye007.html
+- Granny - clgrannyy.html
+- Grow a Garden - clgrowagarden.html
+- Gun Blood - clgunblood.html
+- Gun Mayhem - clgunmayhem.html
+- Gun Mayhem 2 - clgunmayhem2.html
+- Gun Mayhem REDUX - clgunmayhemredux.html
+- Hands of War - clhandsofwar(1)(1).html
+- Happy Wheels - clhappywheels.html
+- Harvest Moon 64 - clharvestmoon64.html
+- Haunt the House - clhauntthehouse.html
+- Hipster Kickball - clhipsterkickball.html
+- Hobo - clhobo.html
+- Hobo 2 - clhobo2.html
+- Hobo 3 - clhobo3.html
+- Hobo 4 - clhobo4.html
+- Hobo 5 - clhobo5.html
+- Hobo 6 - clhobo6.html
+- Hobo 7 - clhobo7.html
+- Home Sheep Home - clhomesheephome.html
+- Impossible Quiz - climpossiblequiz.html
+- Impossible Quiz 2 - climpossiblequiz2.html
+- Ink Game - clinkgame.html
+- Interactive Buddy - clinteractivebuddy.html
+- Into Space - clintospace.html
+- Into Space 2 - clintospace2.html
+- Into Space 2 - clintospace3.html
+- IQ Ball - cliqball.html
+- Iron Soldier - clironsoldier.html
+- James Bond Jr. - cljamesbondjr.html
+- Jet Force Gemini - cljetforcegemini.html
+- Jetpack Joyride - cljetpackjoyride.html
+- John Madden Football - clmaddenfootball.html
+- Journey Arcade - cljourneyarcade.html
+- Joust Arcade - cljoustarcade.html
+- Kaizo Mario World - clkaizomarioworld.html
+- Ken Griffey Jr. Presents Major League Baseball - clKenGriffeyJrPresentsMajorLeagueBaseball.html
+- Killer Instinct - clkillerinstinct.html
+- Kingdom Hearts Re:coded - clkingdomheartsrecoded.html
+- Kirby & the Amazing Mirror - clkirbyandtheamzingmirror.html
+- Kirby 64 - clkirby64.html
+- Kirby 64: The Crystal Shards - clkirby64crystalshards.html
+- Kirby Super Star - clkirbysuperstar.html
+- Kirby Tilt 'n' Tumble - clkirbytiltandtumble.html
+- Kirby: Squeak Squad - clkirbysqueaksquad.html
+- Kirby's Adventure - clkirbysadventure.html
+- Kirby's Dream Land - clkirbysdreamland.html
+- Kirby's Dream Land 3 - clkirbysdreamland3.html
+- Knuckles' Chaotix - clknuckleschaotix.html
+- LEGO Racers - cllegoracers.html
+- LEGO Star Wars II: The Original Trilogy - cllegostarwars2gba.html
+- LEGO Star Wars: The Video Game - cllegostarwarsgba.html
+- Lemmings - cllemmings.html
+- Madden Football 64 - clmaddenfootball64.html
+- Madden NFL - clmaddennfl.html
+- Madden NFL 2000 - clmaddennfl2000.html
+- Madden NFL 2001 - clmaddennfl2001.html
+- Madden NFL 2002 - clmaddennfl2002.html
+- Madden NFL '93 - clmadden93.html
+- Madden NFL '94 - clmadden94.html
+- Madden NFL '95 - clmadden95.html
+- Madden NFL '96 - clmadden96.html
+- Madden NFL '98 - clmaddy98.html
+- Madden NFL '99 - clmadden99.html
+- Madness Ambulation - clclmadnessambulation.html
+- Mario & Luigi: Superstar Saga - clmarioandluigisuperstarsaga.html
+- Mario 64 (Version 1) - clmo64(1).html
+- Mario 64 (Version 2) - clmo64 (2).html
+- Mario Builder 64 (Version 1) - clmariobuilder64(1).html
+- Mario Builder 64 (Version 2) - clmariobuilder64 (2).html
+- Mario Golf - clmariogolf.html
+- Mario Is Missing: Done Right - clMarioisMissingDoneRight.html
+- Mario Kart 64 - clmariokart64.html
+- Mario Kart DS - clmariokartds.html
+- Mario Kart: Super Circuit - clmariokartsupercircuit.html
+- Mario Maker (SNES) - clmariomakersnes.html
+- Mario Paint - clmariopaint.html
+- Mario Party Advance - clMario Party Advance.html
+- Mario Party DS - clmariopartyds.html
+- Mario Tennis - clmariotennis.html
+- Mario Tennis (Game Boy) - clmariotennisgb.html
+- Mario's Mystery Meat - clmariosmysterymeat.html
+- Marvel Super Heroes (Arcade) - clMarvelSuperHeroesArcade.html
+- Maui Mallard - clmauimallard.html
+- Max Payne - clmaxpayne.html
+- Meat Boy - clmeatboy.html
+- Mega Man - clmegaman.html
+- Mega Man 2 - clmegaman2.html
+- Mega Man 2 (GBA) - clmegaman2gba.html
+- Mega Man 3 - clmegaman3.html
+- Mega Man 4 - clmegaman4.html
+- Mega Man 5 - clmegaman5.html
+- Mega Man 5 (Game Boy) - clmegaman5gb.html
+- Mega Man 6 - clmegaman6.html
+- Mega Man 7 - clmegaman7.html
+- Mega Man Battle Chip Challenge - clmegamanbattlechipchallenge.html
+- Mega Man Battle Network 3: Blue - clmmbn3b.html
+- Mega Man Battle Network 3: White - clmmbn3w.html
+- Mega Man Battle Network 4: Blue Moon - clmmbn4bm.html
+- Mega Man Battle Network 4: Red Sun - clmmbn4rs.html
+- Mega Man Battle Network 5: Team Colonel - clmegamanbn5tc.html
+- Mega Man Battle Network 5: Team ProtoMan - clmegamanbn5tp.html
+- Mega Man Battle Network 6: Cybeast Falzar - clmegamanbn6cf.html
+- Mega Man Battle Network 6: Cybeast Gregar - clmegamanbn6cg.html
+- Mega Man X - clmegamanx.html
+- Mega Man X2 - clmegamanx2.html
+- Mega Man X3 - clmegamanx3.html
+- Mega Man Zero - clmegamanzero.html
+- Melon Playground - melon-playground.html
+- Metal Gear - clmetalgear.html
+- Metal Gear Solid - clmetalgearsolid.html
+- Metal Slug Advance - clmetalslugadvance.html
+- Metal Slug: 1st Mission - clmetalslugmission1.html
+- Metal Slug: 2nd Mission - clmetalslugmission2.html
+- Metal Sonic Hyperdrive - clMetalSonicHyperdrive.html
+- Metroid - clmetroid.html
+- Metroid Fusion - clmetroidfusion.html
+- Metroid II - clmetroid2.html
+- Metroid: Zero Mission - clmetroidzeromission.html
+- Mickey Mania (SNES) - clmickeymaniasnes.html
+- Micro Mages - clmicromages.html
+- Midway's Greatest Arcade Hits (N64) - clmidwaysgreatesthitsn64.html
+- Minecraft 1.12.2 - Minecraft 1.12.2.html
+- Missile Command - clmisslecommand.html
+- Mobius Revolution - clmobiusrevolution.html
+- Moemon Emerald Vanilla+ - clMoemon Emerald Vanilla+ (v110).html
+- Money Rush - clmoneyrush.html
+- Monster Tracks - clmonstertracks.html
+- Moon Emerald Extreme Randomizer - clmoonemeraldextremerandomizer.html
+- Mortal Kombat - clmortalkombat.html
+- Mortal Kombat 3 - clmortalkombat3.html
+- Mortal Kombat 4 - clmortalkombat4.html
+- Mortal Kombat Advance - clmortalkombatadvance.html
+- Mortal Kombat II - clmortalkombat2.html
+- Mortal Kombat Mythologies: Sub-Zero (N64) - clmkmythologiesn64.html
+- Mr. Driller 2 - clmrdriller2.html
+- Ms. Pac-Man (Version 1) - clmspacman(1).html
+- Ms. Pac-Man (Version 2) - clmspacman (1).html
+- MVP Baseball - clmvpbaseball.html
+- N+ - clnplus.html
+- NARC - clnarc.html
+- NBA Hangtime - clNBAhangtime.html
+- NBA Jam - clNBAjam.html
+- NBA Jam Tournament Edition - clnbajamTE.html
+- Need for Speed: Carbon - Own the City - clnfscarbonowncity.html
+- Need for Speed: Most Wanted - clnfsmostwanted.html
+- Need for Speed: Porsche Unleashed - clnfsporcheunleashed.html
+- Need for Speed: Underground - clnfsunderground.html
+- Need for Speed: Underground 2 - clnfsunderground2.html
+- New Super Mario Bros. - clnewsupermariobros.html
+- New Super Mario Bros. U (DS) - clnsmbuds.html
+- New Super Mario Bros. Wii (DS) - clnsmbwds.html
+- New Super Mario World 2: Around the World - clNewSuperMarioWorld2AroundtheWorld.html
+- Newer Super Mario Bros. DS - clnewersmbds.html
+- NFL Blitz - clnflblitz.html
+- NHL 2002 - clnhl2002.html
+- NHL Hitz 2003 - clnhlhitz2003.html
+- Nicktoons: Freeze Frame Frenzy - clNicktoonsFreezeFrameFrenzy.html
+- Nightshade - clnightshade.html
+- Nintendo World Cup - clnintendoworldcup.html
+- Nintendogs: Labrador & Friends - clnintendogslab.html
+- Nubby's Number Factory - clnubbysnumberfactory.html
+- One Piece - clonepiece.html
+- Opossum Country - clopposumcountry.html
+- Ordinary Sonic ROM Hack - clordinarysonicromhack.html
+- OutRun (Arcade) - clOutrunArcade.html
+- OutRun (Genesis) - clOutrunGenesis.html
+- OvO Dimensions - clovodimensions.html
+- Pac-Man - clpacman.html
+- Paper Mario DSE - clPaperMarioDSE.html
+- Paper Mario Practice Hack - clPaperMarioPracticeHack.html
+- PaRappa the Rapper - clparappatherapper.html
+- Pepsiman - clpepsiman.html
+- Persona - clpersona.html
+- Persona 2 - clpersona2.html
+- Phantasy Star - clphantasystar.html
+- Phantasy Star II - clphantasystar2.html
+- Phantasy Star III - clphantasystar3.html
+- Phantasy Star IV - clphantasystar4.html
+- Phoenix Wright: Justice for All - clpheonixjusticeforall.html
+- Phoenix Wright: Trials and Tribulations - clpheonixtrialsandyear.html
+- Pitfall! - clpitfall.html
+- Pokémon Ambrosia - clPokeAmbrosia.html
+- Pokémon Black - clpokeblack.html
+- Pokémon Black 2 - clpokeblack2html.html
+- Pokémon Blue - clpokeblue.html
+- Pokémon Clover - clpokemonclover.html
+- Pokémon Crystal - clpokemoncrystal.html
+- Pokémon Emerald - clpokemonemerald.html
+- Pokémon Emerald Crest - clpokemonemeraldcrest.html
+- Pokémon Emerald Imperium - clpokeemeraldimperium.html
+- Pokémon Emerald Kaizo - clpokemonemeraldkaizo.html
+- Pokémon Emerald Randomized - clpokeemeraldrandom.html
+- Pokémon Emerald Rogue - clpokeemeraldrogue.html
+- Pokémon Emerald Rush Edition - clPokémon Emerald Rush Edition (20).html
+- Pokémon Emerald Seaglass - clpokemonemeraldseaglass.html
+- Pokémon Emerald: Extended Cut - clpokeemeraldextendedcut.html
+- Pokémon Evolved - clpokemonevolvedsfdgsdfs.html
+- Pokémon FireRed - clpokemonfirered.html
+- Pokémon FireRed Randomized - clpokemonfireredrandomized.html
+- Pokémon Fusion 3 - clPokeFusion3.html
+- Pokémon Gaia - clpokegaia.html
+- Pokémon Gold - clpokemongold.html
+- Pokémon Kaizo Iron FireRed - clpokemonkaizoironfirered.html
+- Pokémon Last Fire Red - cllastfirered.html
+- Pokémon Lazarus - clpokemonlazarus.html
+- Pokémon Light Platinum - clpokelightplatinum.html
+- Pokémon Low Budget Crystal - clpokelowbudgetcrystal.html
+- Pokémon Modern Emerald - clpokemonmodernemerald.html
+- Pokémon Moon Galaxy - clpokemoongalaxy.html
+- Pokémon Mystery Dungeon - clpokemonmysterydungeon.html
+- Pokémon Perfect Emerald 5.5 - clpokemonperfectemerald5.5.html
+- Pokémon Picross - clpokepicross.html
+- Pokémon Pure Blue - clpokepureblue.html
+- Pokémon Pure Green - clpokepuregreen.html
+- Pokémon Pure Red - clpokepurered.html
+- Pokémon Quetzal - clpokemonquetzal.html
+- Pokémon R.O.W.E. - clpokerowe.html
+- Pokémon Red - clpokered.html
+- Pokémon Roaring Red - clpokemonroaringred.html
+- Pokémon Rocket Edition - clPokemonrocketedition.html
+- Pokémon Ruby - clpokemonruby.html
+- Pokémon Sapphire - clpokemonsapphire.html
+- Pokémon Silver - clpokemonsilver.html
+- Pokémon SL Green - clpokemonslgreen.html
+- Pokémon SM Red - clpokemonsmred.html
+- Pokémon Snap - clpokemonsnap.html
+- Pokémon Stunning Steel - clPokémonstunningsteel.html
+- Pokémon Sun Sky - clpokesunsky.html
+- Pokémon Theta Emerald EX - clPokeThetaEmeraldEX.html
+- Pokémon Too Many Types 2 - clpoketoomanytypes2.html
+- Pokémon Trading Card Game - clpoketcg1.html
+- Pokémon Trading Card Game 2 - clpoketcg2.html
+- Pokémon Ultimate Fusion - clpokemonultimatefusion.html
+- Pokémon Unbound - clpokemonunbound.html
+- Pokémon White 2 - clpokewhite2.html
+- Pokémon Yellow - clpokeyellow.html
+- Portal - clportal.html
+- Prodigy: Entrapta - clprodigyentrapta.html
+- Prodigy: MTKSIKM - clprodigyMTKSIKM.html
+- Puck Man - clpuckman.html
+- Punch-Out!! - clpunchout.html
+- Puyo Puyo Fever - clpuyopuyofever.html
+- Pyrotoad - clpyrotoad.html
+- Riddle School 5 - clriddleschool5.html
+- Side Effects - Side Effects.html
+- Skibidi Shooter - skibidi-shooter.html
+- Steal A Brainrot - Steal A Brainrot.html
+- Super Mario Bros. 3 - clmario3.html
+- The Jungle Book - cljunglebooksnes.html
+- Ultimate Flash Sonic - clflashsonic.html
+- Undertale - Undertale.html
+
+## Structurally loadable games
+
+- Ace Combat 2 - clacecombat2.html
+- Ace Combat 3 - clacecombat3.html
+- B3313 - clB3313.html
+- Backyard Football - clbackyardfootball.html
+- Backyard Soccer - clbackyardsoccer.html
+- Bad Parenting 1 - clbadparenting.html
+- Balatro GBA - clbalatrogba.html
+- Baldi's Fun New School Ultimate - clbaldisfunnewschoolultimate.html
+- BAS - clbas.html
+- Basketball Legends - clbasketballlegends(1).html
+- Blockblast - blockblast.html
+- Boom Slingers: Reboom - Boom Slingers_ Reboom.html
+- BuildNow GG - clbuildnowgg.html
+- Captain Lang - clcaptainlang.html
+- Castlevania: Dawn of Sorrow - clcastlevaniadawnofsorrow.html
+- Castlevania: Portrait of Ruin - clportraitofruin.html
+- Colin McRae Rally - clmcraerally.html
+- Count Masters - clcountmastersstickmangames.html
+- Funny Shooter 2 - clfunnyshooter2.html
+- Geometry Dash SubZero - clgdsubzero.html
+- Going Balls - clgoingballs.html
+- Gorilla Tag - gtag.html
+- Gran Turismo - clgranturismo.html
+- Granddad - clgranddad.html
+- GTA - clgtaalty.html
+- Heart and Soul - clheartandsoul.html
+- Hollow Knight - Hollow Knight.html
+- Hot Wax - clhotwax.html
+- Hungry Lamu - clhungrylamu.html
+- Ice Climber - cliceclimber.html
+- Idle Dice - clidledice.html
+- Inkwell - clInkwell (v104).html
+- JoJo's Bizarre Adventure - cljojobaps1.html
+- Kingdom Hearts 358/2 Days - clkingdomheartsdays.html
+- Kingdom Hearts Re:coded (Alt) - clkingdomheartsrecodedalt.html
+- Kingdom Hearts: Chain of Memories - clchainofmemories.html
+- Kirby Super Star Ultra - clkirbysuperstarultra.html
+- Kirby: Canvas Curse - clkirbycanvascurse.html
+- LEGO Batman 2: DC Super Heroes - cllegobatman2superheroes.html
+- LEGO Batman: The Videogame - cllegobatman.html
+- LEGO Indiana Jones 2: The Adventure Continues - cllegoindianajones2.html
+- LEGO Indiana Jones: The Original Adventures - cllegoindianajones.html
+- LEGO Ninjago: The Videogame - cllegoninjago.html
+- LEGO Star Wars: The Complete Saga - cllegostarwars.html
+- Mach Rider - clmachrider.html
+- Mario & Luigi: Bowser's Inside Story - clinsidestory.html
+- Mario & Luigi: Partners in Time - clpartnersintime.html
+- Mario Bros. (NES) - clmariobrosnes.html
+- Mario Party - clmarioparty.html
+- Mario Party 2 - clmarioparty2.html
+- Mario Party 3 - clmarioparty3.html
+- Marvel Super Heroes vs. Street Fighter - clMarvelVsStreetFighter.html
+- Marvel Super Heroes vs. Street Fighter (Japan) - clmarvelvsstreetfighterjp.html
+- Marvel vs. Capcom (PS1) - clMarvelVsCapcomPS1.html
+- Medal of Honor - clmedalofhonor (2).html
+- MediEvil - clmedievil.html
+- Mega Man 8 - clmegaman8.html
+- Mega Man Battle Network: WonderSwan - clmmbnws.html
+- Mega Man Legends - clmegamanlegends.html
+- Mega Man Star Force 2: Zerker x Ninja - clmmsf2zxn.html
+- Mega Man Star Force 2: Zerker x Saurian - clmmsf2zxs.html
+- Mega Man Star Force 3: Black Ace - clmmsf3ba.html
+- Mega Man Star Force 3: Red Joker - clmmsf3rj.html
+- Mega Man Star Force: Dragon - clmmsfd.html
+- Mega Man Star Force: Leo - clmmsfl.html
+- Mega Man Star Force: Pegasus - clmmsfp.html
+- Mega Man X4 - clmegamanx4.html
+- Mega Man X5 - clmegamanx5.html
+- Mega Man X6 - clmegamanx6.html
+- Mega Man ZX - clmegamanzx.html
+- Mega Man: The Wily Wars - clmmwilywars.html
+- Meow UwU - clmeowuwu.html
+- Metal Gear Solid (PlayStation) - clmetalgearsolidps.html
+- Metal Slug - clmetalslug.html
+- Metal Slug 2 - clmetalslug2.html
+- Metroid Prime Hunters - clmetroidprimehunters.html
+- Mortal Kombat (Arcade) - clmortalkombata.html
+- Mortal Kombat 3 (Arcade) - clmortalkombat3a.html
+- Mortal Kombat 4 (Alternate) - clmortkom4.html
+- Mortal Kombat 4: Amped Up - clmk4ampedup.html
+- Mortal Kombat II (Arcade) - clmortalkombat2a.html
+- Mortal Kombat Trilogy (PS1) - clmktrilogyps1.html
+- Mr. Driller - clmrdriller.html
+- NHL 98 - clnhl98.html
+- Pac-Man (Arcade) - clpacmana.html
+- Pac-Man World (GBA) - clpacmanworldg.html
+- Paper Mario - clpapermario.html
+- Paper Mario: Pro Mode - clpapermariopromode.html
+- Paper Mario: The Thousand-Year Door - clpapermariottyd.html
+- Perfect Dark - clperfectdark.html
+- Phoenix Wright: Ace Attorney - clpheonixrightaceattorny.html
+- Pinball (NES) - clpinballnes.html
+- Plants vs. Zombies (Nintendo DS) - clplantsvszombiesnds.html
+- Pokémon Aesthetic Red - clpokeaestheticred.html
+- Pokémon Amnesia - clpokemonamnesia.html
+- Pokémon Battle Factory - clpokebattlefact.html
+- Pokémon Blaze Black 2 Redux - clpokeblazeblack2redux.html
+- Pokémon Crystal Advance Redux - clpokecrystaladvanceredux.html
+- Pokémon Crystal Legacy - clpokecrystallegacy.html
+- Pokémon Diamond - clpokediamond.html
+- Pokémon Emerald Legacy - clpokeemeraldlegacy.html
+- Pokémon Emerald Mini - clpokemonemeraldmini.html
+- Pokémon Energized Emerald - clpokemonenergizedemerald.html
+- Pokémon FireRed & LeafGreen Plus - clpokefrlgplus.html
+- Pokémon Flora Sky - clpokeflora.html
+- Pokémon Golden Shield - clpokegoldenshield.html
+- Pokémon HeartGold - clpokeheartgold.html
+- Pokémon HeartGold Generations - clPokeHeartgoldGenerations.html
+- Pokémon Inclement Emerald - clinclementemerald.html
+- Pokémon LeafGreen - clpokemonleafgreen.html
+- Pokémon Liquid Crystal - clpokeliquidcrysta.html
+- Pokémon Mega Moemon - clpokemegamoemon.html
+- Pokémon Moon Emerald - clpokemoonemerald.html
+- Pokémon Mystery Dungeon: Explorers of Sky - clpokemysteryexplorersofsky.html
+- Pokémon Nameless - clpokenameless.html
+- Pokémon Naruto Advanced Ninja Showdown - clpkmnarutoans.html
+- Pokémon Pearl - clpokepearl.html
+- Pokémon Platinum - clpokeplatinum.html
+- Pokémon Platinum Randomized - clpokeplatinumrandomized.html
+- Pokémon Renegade Platinum - clpokerenegadeplat.html
+- Pokémon Run & Bun - clpokerunandbun.html
+- Pokémon Saiph - clpokemonsaiph.html
+- Pokémon Saiph 2 - clpokemonsaiph2.html
+- Pokémon Scorched Silver - clpokescorchedsilver.html
+- Pokémon Scrambled Scarlet - clpokescrambledscarlet.html
+- Pokémon Shin Sigma - clpokemonshinsigma.html
+- Pokémon SORS - clpokemonsors.html
+- Pokémon SORS 2 - clpokemonsors2.html
+- Pokémon SoulSilver - clpokesoulsilver.html
+- Pokémon Stadium - clpokemonstadium.html
+- Pokémon Stadium 2 - clpokemonstadium2.html
+- Pokémon Trade & Stache - clPokémon Trade&_Stache (V11).html
+- Pokémon TWO - clPokémon TWO (v11).html
+- Pokémon Ultra Violet - clpokeultraviolet.html
+- Pokémon Vega - clpokevega.html
+- Pokémon Volt White 2 Redux - clpokevoltwhite2redux.html
+- Pokémon Volume 1 - clpokemonvolume1.html
+- Pokémon Volume 2 - clpokemonvolume2.html
+- Pokémon Volume 3 - clpokemonvolume3.html
+- Pokémon Volume 4 - clpokemonvolume4.html
+- Pokémon Voyager - clpokevoyager.html
+- Pokémon White - clpokewhite.html
+- PowerSlave - clpowerslave.html
+- Pro Wrestling - clprowrestling.html
+- Professor Layton and the Curious Village - clprofessorlaytonandthecuriousvillage.html
+- R.E.P.O - R.E.P.O.html
+- Shinobi - clggshinobi.html
+- Stone Grass Mowing Simulator - Stone Grass Mowing Simulator.html
+- Super Princess Peach - clpeach.html
+- The Legend of Zelda: Majora's Mask - clmajorasmask.html
+- The Legend of Zelda: Ocarina of Time - clocarinaoftime.html
+- The Legend of Zelda: Ocarina of Time - Master Quest - clOotMasterQuest.html
+- Undertale Yellow - Undertale Yellow.html

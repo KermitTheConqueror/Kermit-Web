@@ -1,0 +1,13 @@
+const {chromium}=require('C:/Users/xavie/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict');
+(async()=>{const browser=await chromium.launch({channel:'msedge',headless:true});try{const page=await browser.newPage();
+await page.route('**/api/movies?*',r=>r.fulfill({json:{page:1,total_pages:1,results:[{id:123,title:'Test show',media_type:new URL(r.request().url()).searchParams.get('type')||'movie'}]}}));
+await page.route('**/api/tv/123',r=>r.fulfill({json:{seasons:[{season_number:1,name:'Season 1'},{season_number:2,name:'Season 2'}]}}));
+await page.route('**/api/tv/123/season/*',r=>r.fulfill({json:{episodes:[{episode_number:1,name:'First'},{episode_number:2,name:'Second'}]}}));
+await page.route('https://cinesrc.st/**',r=>r.fulfill({body:'Mock player'}));
+await page.goto('http://127.0.0.1:8000/movies.html');await page.getByRole('button',{name:'TV shows',exact:true}).click();await page.getByRole('button',{name:'Details for Test show'}).click();
+await page.locator('#seasons').selectOption('2');await page.locator('#episodes').selectOption('2');await page.locator('#watch').click();
+assert.equal(await page.locator('#player-host iframe').getAttribute('src'),'https://cinesrc.st/embed/tv/123?s=2&e=2');
+await page.locator('#player-close').click();await page.getByRole('button',{name:'Movies',exact:true}).click();await page.getByRole('button',{name:'Details for Test show'}).click();assert.equal(await page.locator('#episode-picker').isHidden(),true);
+console.log('PASS: TV season/episode selection, correct embed URL, and movie switch. Playback mocked.');
+}finally{await browser.close();}})();

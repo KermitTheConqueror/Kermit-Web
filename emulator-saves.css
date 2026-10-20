@@ -1,0 +1,5 @@
+.emulator-saves{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 18px;background:#151b27;color:#e7edf8;font:14px system-ui}.emulator-saves[hidden]{display:none}.emulator-saves button,.emulator-saves select{background:#293449;border:1px solid #53617c;border-radius:7px;padding:8px 12px;color:white;font:inherit;cursor:pointer}.emulator-saves button:disabled{opacity:.45;cursor:not-allowed}.emulator-saves [role=status]{flex-basis:100%;color:#b9cbe5;font-size:12px}.emulator-saves label{white-space:nowrap}
+.player-stage-shell > .emulator-saves { flex:0 0 auto; }
+details.emulator-saves { display:block; }
+details.emulator-saves summary { cursor:pointer; }
+details.emulator-saves[open] { max-height:120px; overflow:auto; }

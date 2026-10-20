@@ -1,0 +1,89 @@
+*{box-sizing:border-box}
+.github-limit-banner{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:10000;width:max-content;max-width:calc(100vw - 32px);padding:12px 18px;border:1px solid #e3b34166;border-radius:12px;background:#182230;color:#f3d993;box-shadow:0 8px 30px #0005;font-size:13px;pointer-events:none}
+.github-limit-banner[hidden]{display:none}
+.deploy-dot[hidden]{display:none}
+.deploy-dot{display:inline-block;flex:none;width:10px;height:10px;border-radius:50%;margin:0 8px;vertical-align:middle;box-shadow:0 0 0 3px #ffffff08}
+.deploy-red{background:#f85149}.deploy-yellow{background:#e3b341}.deploy-green{background:#3fb950}
+.repo-hero>.repo-showcase{border-radius:26px;overflow:hidden;border:1px solid #aee4f430}
+.profile-projects{margin-top:24px;border-top:1px solid #3d444d;padding-top:8px}
+.profile-project{border:1px solid #3d444d;border-radius:8px;padding:14px;margin-bottom:10px}
+.github-profile .profile-project-link{display:block;padding:0;border:0;background:none;color:#8dcbff;text-align:left;font-size:15px;overflow-wrap:anywhere}
+.github-profile .profile-project-link:hover{background:none;text-decoration:underline;transform:none}
+.github-profile .profile-project p{font-size:13px;color:#bdcbd8;margin:8px 0}
+.profile-project small{color:#9fbbcd;font-size:12px}
+[data-github-profile]{cursor:pointer}
+.github-profile{width:min(1000px,calc(100vw - 40px));max-height:90dvh;overflow:auto;padding:32px;border:1px solid #3d444d;border-radius:22px;background:linear-gradient(145deg,#142639,#0d1724 55%);color:#e6edf3;box-shadow:0 24px 80px #0009;scrollbar-color:#43596d #0d1724;scrollbar-width:thin}
+.profile-content>.profile-bio{font-size:17px;max-width:760px}.github-profile .profile-content>img{width:112px;height:112px;border:3px solid #aee4f433}.github-profile .profile-content>h2{font-size:32px}.profile-projects>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.profile-projects .profile-project{margin:0;padding:20px;background:#ffffff04}.profile-projects .profile-project-link{font-size:17px}
+.github-profile::backdrop{background:#000a;backdrop-filter:blur(5px)}
+.github-profile .profile-close{display:block;margin-left:auto;margin-bottom:16px;padding:7px 14px;font-size:13px}
+.github-profile img{width:88px;height:88px;border-radius:50%;object-fit:cover}.github-profile h2{font-size:24px;margin:16px 0 4px;overflow-wrap:anywhere}.github-profile p{overflow-wrap:anywhere;line-height:1.65}.profile-handle,.profile-stats{color:#9fbbcd;font-size:13px}.profile-bio{white-space:pre-wrap}.profile-stats{border-top:1px solid #ffffff20;padding-top:16px}
+.repo-hero{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-bottom:30px}
+.repo-hero h1{font-size:clamp(36px,4.7vw,70px)}
+.repo-showcase{min-width:0;margin-inline:-28px;padding:28px;border-block:1px solid #aee4f433;border-radius:0;background:linear-gradient(135deg,#213e50e8,#111c2cee);box-shadow:0 18px 50px #0004;backdrop-filter:blur(18px)}
+.showcase-label{color:#aee4f4;font-size:10px;letter-spacing:2px;font-weight:800;margin:0 0 22px}
+.showcase-slide{min-height:230px}.showcase-owner{display:flex;align-items:center;gap:10px;color:#b8cbd9;font-size:13px}.showcase-slide h2{font-size:26px;margin:16px 0 12px;overflow-wrap:anywhere}.showcase-slide a{color:#e0f4ff;text-decoration:none}.showcase-slide a:hover{text-decoration:underline}.showcase-description{color:#becbd8;line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.showcase-meta{color:#9fc4d7;font-size:12px}.showcase-controls{display:flex;gap:10px;align-items:center;border-top:1px solid #ffffff18;padding-top:16px}.showcase-controls[hidden]{display:none}.showcase-controls button{padding:7px 12px;font-size:12px}.showcase-controls span{font-size:12px;color:#a4b4c3}.showcase-controls button:last-child{margin-left:auto;background:#ffffff10;color:#d5e8f4}
+@media(max-width:850px){.repo-hero{grid-template-columns:1fr;gap:14px}.repo-showcase{padding:22px}.showcase-slide{min-height:200px}}
+@media(max-width:650px){.repo-showcase{margin-inline:-18px;padding-inline:18px}}
+.repo-feed-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 12px}
+.repo-feed-tabs button{background:#142332;color:#b8cbd9;font-size:13px;padding:9px 14px}
+.repo-feed-tabs button[aria-pressed="true"]{background:#b2e5ff;color:#102330}
+.repo-card h2{display:flex;align-items:center;gap:12px}
+.repo-avatar{width:36px;height:36px;flex:none;border-radius:50%;object-fit:cover;border:1px solid #ffffff25}
+/* Hide the search page's scrollbar without disabling wheel/touch scrolling. */
+html,body{scrollbar-width:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+body{margin:0;color:#eef4fa;font:16px system-ui,sans-serif;min-height:100vh}
+main{width:100%;max-width:none;margin:0;padding:36px 28px 120px}
+.home{display:inline-flex;align-items:center;gap:12px;color:#ccd4dd;text-decoration:none;font-size:13px;font-weight:650}
+.home>span:not(.repo-brand){color:#697786}
+.repo-brand{display:grid;place-items:center;width:34px;height:34px;background:#c0edff;color:#13212e;border-radius:11px;font-size:22px;font-weight:900}
+.eyebrow{margin-top:56px;color:#aee4f4;font-size:10px;font-weight:800;letter-spacing:4px}
+h1{font-size:clamp(38px,5.7vw,70px);letter-spacing:-2.8px;line-height:1.06;margin:18px 0;font-weight:850;text-shadow:0 4px 30px #0008}
+h1 span{color:#b6d9e8}
+.intro{color:#b8c4d1;line-height:1.7;margin:20px 0 32px;font-size:15px}
+form{padding:24px;background:linear-gradient(135deg,#162331dc,#0c131ee8);border:1px solid #ffffff25;border-radius:22px;box-shadow:0 18px 48px #0004,inset 0 1px #ffffff08;backdrop-filter:blur(18px)}
+label{display:block;font-size:11px;font-weight:750;letter-spacing:.5px;margin-bottom:10px;color:#bacbd8}
+.search-row{display:flex;gap:12px;margin-bottom:20px}
+input{flex:1;min-width:0}
+input,select,button{font:inherit;border-radius:12px;padding:12px 16px;border:1px solid #ffffff25}
+input,select{background:#080f19b3;color:#fff}
+#repo-query{padding:17px 18px;font-size:16px}
+input::placeholder{color:#8495a6}
+button{background:#b2e5ff;color:#102330;font-weight:750;cursor:pointer;transition:background .18s,transform .18s}
+button:hover:not(:disabled){background:#d2efff;transform:translateY(-1px)}
+button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid #8edcf8;outline-offset:3px}
+.hint{color:#a4b4c3;font-size:11px;line-height:1.7;margin:16px 4px}
+#repo-status{color:#d3e3ed;margin:30px 2px 18px;font-size:13px;font-weight:600}
+#repo-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.repo-card{padding:26px;border:1px solid #ffffff20;border-radius:20px;background:linear-gradient(145deg,#192635df,#101822ed);display:flex;flex-direction:column;gap:16px;min-height:190px;box-shadow:0 12px 30px #0003;backdrop-filter:blur(14px);transition:transform .2s,border-color .2s}
+.repo-card:hover{transform:translateY(-3px);border-color:#a5def06b}
+.repo-card h2{font-size:18px;margin:0;overflow-wrap:anywhere;line-height:1.4}
+.repo-card a{color:#c2ebff;text-decoration:none}
+.repo-card a:hover{text-decoration:underline}
+.repo-card p{margin:0;line-height:1.7;font-size:14px;color:#b8c6d5;overflow-wrap:anywhere}
+.repo-meta{margin-top:auto;padding-top:16px;border-top:1px solid #ffffff12;color:#a4bfd0;font-size:12px}
+#repo-pages{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:32px;font-size:13px}
+#repo-pages[hidden]{display:none}
+.repo-viewer{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border-radius:0;background:#0e1724f5!important;box-shadow:0 30px 100px #0009}
+@media(max-width:650px){#repo-results{grid-template-columns:1fr}main{padding:24px 18px 100px}.eyebrow{margin-top:36px}h1{letter-spacing:-1.8px}form{padding:18px}.search-row{gap:8px}#repo-query{font-size:14px;padding:14px 12px}.search-row button{padding:12px}#repo-pages{gap:10px;font-size:12px}.repo-card{padding:22px}}
+@media(prefers-reduced-motion:reduce){button,.repo-card{transition:none}.repo-card:hover,button:hover:not(:disabled){transform:none}}
+/* Featured repository showcase */
+.repo-showcase{padding:36px clamp(28px,5vw,80px);background:radial-gradient(ellipse at 85% 25%,#23516988,transparent 52%),linear-gradient(120deg,#102235f5,#101a2cf5);border-block-color:#aee4f430}
+.showcase-label{font-size:11px;letter-spacing:3px;color:#a8ebd5}
+.showcase-slide{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:48px;align-items:center;min-height:320px}
+.showcase-copy{min-width:0;padding-bottom:20px}
+.showcase-slide h2{font-size:clamp(28px,3.7vw,52px);letter-spacing:-1.5px;line-height:1.15;margin:22px 0 16px}
+.showcase-description{max-width:780px;font-size:16px;line-height:1.8;min-height:56px}
+.showcase-meta{margin:18px 0;color:#9eb6c9}
+.showcase-open{background:#b6edda;color:#102c28;border:1px solid #c4f6e5;padding:12px 20px;font-size:13px;margin-top:4px}
+.showcase-visual{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 20px;background:linear-gradient(145deg,#ffffff0d,#ffffff02);border:1px solid #ffffff18;border-radius:24px;box-shadow:0 20px 50px #0003}
+.showcase-rank{position:absolute;top:12px;right:16px;color:#9dbed1;font:12px ui-monospace,monospace}
+.showcase-portrait{width:112px;height:112px;object-fit:cover;border-radius:26px;border:1px solid #ffffff35;margin-bottom:14px}
+.showcase-visual strong{font-size:28px;color:#ebf7ff}.showcase-visual>span:last-child{font-size:12px;color:#96aec0}
+.showcase-controls{padding-top:20px;gap:14px}
+.showcase-controls>button{min-height:36px;min-width:40px;border-radius:10px}
+.showcase-dots{display:flex;gap:8px;align-items:center;margin-left:12px}
+.showcase-controls .showcase-dots button{width:9px;height:9px;min-width:0;padding:0;border:0;border-radius:10px;background:#6b849960;margin:0}
+.showcase-controls .showcase-dots button[aria-pressed="true"]{width:28px;background:#a8ebd5}
+@media(max-width:700px){.github-profile{padding:20px;width:calc(100vw - 20px)}.profile-projects>div{grid-template-columns:1fr}.showcase-slide{grid-template-columns:1fr;gap:0;min-height:340px}.showcase-visual{display:none}.repo-showcase{padding:24px 18px}.showcase-dots{gap:6px;margin-left:0}.showcase-controls{gap:8px}.showcase-slide h2{letter-spacing:-.6px}}

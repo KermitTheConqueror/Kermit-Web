@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script>if (window.parent !== window) document.documentElement.classList.add('embedded-catalog');</script>
+    <link rel="icon" type="image/svg+xml" href="kermit-web-logo.svg?v=2">
+    <link rel="stylesheet" href="style.css?v=20261018-cloud-card-labels">
+    <link rel="stylesheet" href="section-loader.css?v=3">
+    <link rel="stylesheet" href="dock.css">
+    <link rel="stylesheet" href="video-background.css?v=5">
+    <link rel="stylesheet" href="featured-slideshow.css?v=23">
+    <link rel="stylesheet" href="joker-chat.css?v=1">
+<script src="background-settings.js?v=1" defer></script></head>
+<body class="games-page">
+    <video class="site-background-video" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"><source src="background-video.mp4" type="video/mp4"></video>
+    <script>if (window.parent !== window) { const video = document.querySelector('.site-background-video'); video.pause(); video.remove(); }</script>
+    <div id="games-page-loader" class="section-loader" role="status" aria-live="polite" aria-label="Loading games">
+        <div class="section-loader-content">
+            <h2>Games</h2>
+            <p>Opening page…</p>
+            <div class="section-loader-track" aria-hidden="true"><span></span></div>
+        </div>
+    </div>
+    <canvas id="spaceCanvas" aria-hidden="true"></canvas>
+    <div id="dock-search-overlay" hidden>
+        <div class="search-backdrop" aria-hidden="true"></div>
+        <input id="dock-search-input" type="search" placeholder="Search any game..." autocomplete="off">
+        <div id="dock-search-results"></div>
+    </div>
+    <div id="site-title">kermit web</div>
+    <div id="gallery-wrapper" hidden aria-hidden="true" style="display: none !important;">
+        <div id="games-container">
+
+        <div class="game-launcher" data-url="Hollow Knight.html">
+            <img src="Hollow_Knight_first_cover_art.webp.png" alt="Click to Play Hollow Knight">
+            <div class="overlay">
+                <span class="game-title">Hollow Knight</span>
+            </div>
+        </div>
+        <div class="game-launcher" data-url="Undertale.html">
+            <img src="undertale.jpg" alt="Click to Play Undertale">
+            <div class="overlay">
+                <span class="game-title">Undertale</span>
+            </div>
+        </div>
+        <div class="game-launcher" data-url="Undertale Yellow.html">
+            <img src="Undertale_Yellow_artwork_Game_Jolt.webp" alt="Click to Play Undertale Yellow">
+            <div class="overlay">
+                <span class="game-title">Undertale Yellow</span>
+            </div>
+        </div>
+        <div class="game-launcher" data-url="DELTARUNE.html">
+            <img src="deltarune.png" alt="Click to Play Deltarune">
+            <div class="overlay">
+                <span class="game-title">Deltarune</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div id="all-games-section">
+        <section id="featured-slideshow" aria-label="Featured games slideshow" aria-roledescription="carousel"></section>
+        <div id="game-meta"></div>
+        <div id="game-search-wrapper">
+            <input
+                id="game-search"
+                type="text"
+                placeholder="Search games..."
+                autocomplete="off"
+            >
+            <div id="search-suggestions"></div>
+        </div>
+        <div id="all-games-container">
+            <div class="game-launcher cover-only" data-url="poly-track.html" style='--card-image: url("game-covers/poly-track.webp");'>
+                <div class="cover-label">Poly Track</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="geometry-dash.html" style='--card-image: url("game-covers/geometry-dash.png");'>
+                <div class="cover-label">Geometry Dash</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cliceclimber.html" style='--card-image: url("ice-climber.png");'>
+                <div class="cover-label">Ice Climber</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clinclementemerald.html" style='--card-image: url("inclement-emerald.webp");'>
+                <div class="cover-label">Pokemon Inclement Emerald</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clInkwell (v104).html" style='--card-image: url("inkwell.png");'>
+                <div class="cover-label">Inkwell</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clinsidestory.html" style='--card-image: url("bowsers-inside-story.png");'>
+                <div class="cover-label">Mario &amp; Luigi: Bowser&#39;s Inside Story</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clironsoldier.html" style='--card-image: url("iron-soldier.png");'>
+                <div class="cover-label">Iron Soldier</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljamesbondjr.html" style='--card-image: url("james-bond-jr.png");'>
+                <div class="cover-label">James Bond Jr.</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljetforcegemini.html" style='--card-image: url("jet-force-gemini.png");'>
+                <div class="cover-label">Jet Force Gemini</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljetpackjoyride.html" style='--card-image: url("jetpack-joyride.jpg");'>
+                <div class="cover-label">Jetpack Joyride</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljojobaps1.html" style='--card-image: url("jojos-bizarre-adventure.png");'>
+                <div class="cover-label">JoJo&#39;s Bizarre Adventure</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljourneyarcade.html" style='--card-image: url("journey-arcade.png");'>
+                <div class="cover-label">Journey Arcade</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljoustarcade.html" style='--card-image: url("joust-arcade.png");'>
+                <div class="cover-label">Joust Arcade</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cljunglebooksnes.html" style='--card-image: url("jungle-book-snes.png");'>
+                <div class="cover-label">The Jungle Book</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkaizomarioworld.html" style='--card-image: url("kaizo-mario-world.jpg");'>
+                <div class="cover-label">Kaizo Mario World</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clKenGriffeyJrPresentsMajorLeagueBaseball.html" style='--card-image: url("ken-griffey-jr-baseball.png");'>
+                <div class="cover-label">Ken Griffey Jr. Presents Major League Baseball</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkillerinstinct.html" style='--card-image: url("killer-instinct.png");'>
+                <div class="cover-label">Killer Instinct</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirby64.html" style='--card-image: url("kirby-64.png");'>
+                <div class="cover-label">Kirby 64</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirby64crystalshards.html" style='--card-image: url("kirby-64-crystal-shards.png");'>
+                <div class="cover-label">Kirby 64: The Crystal Shards</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbyandtheamzingmirror.html" style='--card-image: url("kirby-amazing-mirror.png");'>
+                <div class="cover-label">Kirby &amp; the Amazing Mirror</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbycanvascurse.html" style='--card-image: url("kirby-canvas-curse.png");'>
+                <div class="cover-label">Kirby: Canvas Curse</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysadventure.html" style='--card-image: url("kirbys-adventure.png");'>
+                <div class="cover-label">Kirby&#39;s Adventure</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysdreamland.html" style='--card-image: url("kirbys-dream-land.png");'>
+                <div class="cover-label">Kirby&#39;s Dream Land</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysdreamland3.html" style='--card-image: url("kirbys-dream-land-3.png");'>
+                <div class="cover-label">Kirby&#39;s Dream Land 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysqueaksquad.html" style='--card-image: url("kirby-squeak-squad.png");'>
+                <div class="cover-label">Kirby: Squeak Squad</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysuperstar.html" style='--card-image: url("kirby-super-star.png");'>
+                <div class="cover-label">Kirby Super Star</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbysuperstarultra.html" style='--card-image: url("kirby-super-star-ultra.png");'>
+                <div class="cover-label">Kirby Super Star Ultra</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clkirbytiltandtumble.html" style='--card-image: url("kirby-tilt-n-tumble.png");'>
+                <div class="cover-label">Kirby Tilt &#39;n&#39; Tumble</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clknuckleschaotix.html" style='--card-image: url("knuckles-chaotix.png");'>
+                <div class="cover-label">Knuckles&#39; Chaotix</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllastfirered.html" style='--card-image: url("pokemon-last-fire-red.png");'>
+                <div class="cover-label">Pokemon Last Fire Red</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clLegacyOfGoku.html" style='--card-image: url("legacy-of-goku.png");'>
+                <div class="cover-label">Dragon Ball Z: The Legacy of Goku</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegobatman.html" style='--card-image: url("lego-batman.png");'>
+                <div class="cover-label">LEGO Batman: The Videogame</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegobatman2superheroes.html" style='--card-image: url("lego-batman-2.png");'>
+                <div class="cover-label">LEGO Batman 2: DC Super Heroes</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegoindianajones.html" style='--card-image: url("lego-indiana-jones.png");'>
+                <div class="cover-label">LEGO Indiana Jones: The Original Adventures</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegoindianajones2.html" style='--card-image: url("lego-indiana-jones-2.png");'>
+                <div class="cover-label">LEGO Indiana Jones 2: The Adventure Continues</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegoninjago.html" style='--card-image: url("lego-ninjago.png");'>
+                <div class="cover-label">LEGO Ninjago: The Videogame</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegoracers.html" style='--card-image: url("lego-racers.png");'>
+                <div class="cover-label">LEGO Racers</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegostarwars.html" style='--card-image: url("lego-star-wars-complete-saga.png");'>
+                <div class="cover-label">LEGO Star Wars: The Complete Saga</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegostarwars2gba.html" style='--card-image: url("lego-star-wars-2-gba.png");'>
+                <div class="cover-label">LEGO Star Wars II: The Original Trilogy</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllegostarwarsgba.html" style='--card-image: url("lego-star-wars-gba.png");'>
+                <div class="cover-label">LEGO Star Wars: The Video Game</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cllemmings.html" style='--card-image: url("lemmings.png");'>
+                <div class="cover-label">Lemmings</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Build a Big Army.html" style='--card-image: url("Army_card.png");'>
+                <div class="cover-label">Build a Big Army</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbadparenting.html" style='--card-image: url("1_card.png");'>
+                <div class="cover-label">Bad Parenting 1</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="R.E.P.O.html" style='--card-image: url("R.E.P.O_card.png");'>
+                <div class="cover-label">R.E.P.O</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Binding of Issac_ Wrath of the Lamb.html" style='--card-image: url("Lamb_card.png");'>
+                <div class="cover-label">Binding of Isaac: Wrath of the Lamb</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Camouflage and Sniper.html" style='--card-image: url("Sniper_card.png");'>
+                <div class="cover-label">Camouflage and Sniper</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Minecraft 1.12.2.html" style='--card-image: url("1.12.2_card.png");'>
+                <div class="cover-label">Minecraft 1.12.2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="A Dance of Fire and Ice.html" style='--card-image: url("Ice_card.png");'>
+                <div class="cover-label">A Dance of Fire and Ice</div>
+            </div>
+
+            <div class="game-launcher cover-only" data-url="Candy Crush.html" style='--card-image: url("Crush_card.png");'>
+                <div class="cover-label">Candy Crush</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Side Effects.html" style='--card-image: url("Effects_card.png");'>
+                <div class="cover-label">Side Effects</div>
+            </div>
+
+            <div class="game-launcher cover-only" data-url="Stone Grass Mowing Simulator.html" style='--card-image: url("StoneGrass_card.png");'>
+                <div class="cover-label">Stone Grass Mowing Simulator</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="99nightsitf.html" style='--card-image: url("99nightsitf_card.png");'>
+                <div class="cover-label">99 Nights ITF</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Basket Random.html" style='--card-image: url("Random_card.png");'>
+                <div class="cover-label">Basket Random</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="blockblast.html" style='--card-image: url("blockblast_card.png");'>
+                <div class="cover-label">Blockblast</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="badpiggies.html" style='--card-image: url("badpiggies_card.png");'>
+                <div class="cover-label">Bad Piggies</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Boom Slingers_ Reboom.html" style='--card-image: url("Reboom_card.png");'>
+                <div class="cover-label">Boom Slingers: Reboom</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="Steal A Brainrot.html" style='--card-image: url("Brainrot_card.png");'>
+                <div class="cover-label">Steal A Brainrot</div>
+            </div>
+
+            <!-- Added games (generic cover) -->
+            <div class="game-launcher cover-only" data-url="cl60secondsburgerrun.html" style='--card-image: url("cl60secondsburgerrun_card.png");'>
+                <div class="cover-label">60 Seconds Burger Run</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="1v1lol-reloaded.html" style='--card-image: url("cl1v1lol_card.png");'>
+                <div class="cover-label">1v1LOL</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3slices2.html" style='--card-image: url("cl3slices2_card.png");'>
+                <div class="cover-label">3 Slices 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clacegangstertaxi.html" style='--card-image: url("clacegangstertaxi_card.png");'>
+                <div class="cover-label">Ace Gangster Taxi</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clachievementunlocked.html" style='--card-image: url("clachievementunlocked_card.png");'>
+                <div class="cover-label">Achievement Unlocked</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3pandas.html" style='--card-image: url("cl3pandas_card.png");'>
+                <div class="cover-label">3 Pandas</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl9007199254740992.html" style='--card-image: url("cl9007199254740992_card.png");'>
+                <div class="cover-label">9007199254740992</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clachillies2.html" style='--card-image: url("clachillies2_card.png");'>
+                <div class="cover-label">Achillies 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl2048cupcakes.html" style='--card-image: url("cl2048cupcakes_card.png");'>
+                <div class="cover-label">2048: Cupcakes</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl1on1soccer.html" style='--card-image: url("cl1on1soccer_card.png");'>
+                <div class="cover-label">1 on 1 Soccer</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3pandasbrazil.html" style='--card-image: url("cl3pandasbrazil_card.png");'>
+                <div class="cover-label">3 Pandas Brazil</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3pandasjapan.html" style='--card-image: url("cl3pandasjapan_card.png");'>
+                <div class="cover-label">3 Pandas Japan</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clachillies.html" style='--card-image: url("clachillies_card.png");'>
+                <div class="cover-label">Achillies</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clacecombat3.html" style='--card-image: url("clacecombat3_card.png");'>
+                <div class="cover-label">Ace Combat 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clachievmentunlocked2.html" style='--card-image: url("clachievmentunlocked2_card.png");'>
+                <div class="cover-label">Achievement Unlocked 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl10bullets.html" style='--card-image: url("cl10bullets_card.png");'>
+                <div class="cover-label">10 Bullets</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3pandasfantasy.html" style='--card-image: url("cl3pandasfantasy_card.png");'>
+                <div class="cover-label">3 Pandas Fantasy</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl60secondssantarun.html" style='--card-image: url("cl60secondssantarun_card.png");'>
+                <div class="cover-label">60 Seconds Santa Run</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clachievmentunlocked3.html" style='--card-image: url("clachievmentunlocked3_card.png");'>
+                <div class="cover-label">Achievement Unlocked 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl3dash.html" style='--card-image: url("cl3dash_card.png");'>
+                <div class="cover-label">3 Dash</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl1v1tennis.html" style='--card-image: url("cl1v1tennis_card.png");'>
+                <div class="cover-label">1v1 Tennis</div>
+            </div>
+
+
+            <div class="game-launcher cover-only" data-url="cl40xescape.html" style='--card-image: url("cl40xescape_card.png");'>
+                <div class="cover-label">40x Escape</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl2048.html" style='--card-image: url("cl2048_card.png");'>
+                <div class="cover-label">2048</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clacecombat2.html" style='--card-image: url("clacecombat2_card.png");'>
+                <div class="cover-label">Ace Combat 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl8ballclassic.html" style='--card-image: url("cl8ballclassic_card.png");'>
+                <div class="cover-label">8 Ball Classic</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl10morebullets.html" style='--card-image: url("cl10morebullets_card.png");'>
+                <div class="cover-label">10 More Bullets</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl2Dshooting.html" style='--card-image: url("cl2Dshooting_card.png");'>
+                <div class="cover-label">2D Shooting</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl8ballpool.html" style='--card-image: url("cl8ballpool_card.png");'>
+                <div class="cover-label">8 Ball Pool</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl99balls.html" style='--card-image: url("cl99balls_card.png");'>
+                <div class="cover-label">99 Balls</div>
+            </div>
+
+            <div class="game-launcher cover-only" data-url="cl3pandasnight.html" style='--card-image: url("cl3pandasnight_card.png");'>
+                <div class="cover-label">3 Pandas Night</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl4thandgoal.html" style='--card-image: url("cl4thandgoal_card.png");'>
+                <div class="cover-label">4th and Goal</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cl12minibattles.html" style='--card-image: url("cl12minibattles_card.png");'>
+                <div class="cover-label">12 Mini Battles</div>
+            </div>
+
+            <div class="game-launcher cover-only" data-url="clcoverorangeplayerspack3.html" style='--card-image: url("cover orange journey players pack 3.jpg");'>
+                <div class="cover-label">Cover Orange: Players Pack 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorange2.html" style='--card-image: url("cover orange 2.avif");'>
+                <div class="cover-label">Cover Orange 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clchuzzle.html" style='--card-image: url("chuzzle.png");'>
+                <div class="cover-label">Chuzzle</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangejourneyspace.html" style='--card-image: url("cover orange journey space.jpg");'>
+                <div class="cover-label">Cover Orange: Journey Space</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangeplayerspack.html" style='--card-image: url("cover orange journey players pack.jpg");'>
+                <div class="cover-label">Cover Orange: Players Pack</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clchainofmemories.html" style='--card-image: url("chain of memories.jpg");'>
+                <div class="cover-label">Kingdom Hearts: Chain of Memories</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clciviballs.html" style='--card-image: url("civiballs.jpg");'>
+                <div class="cover-label">Civiballs</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcurveball.html" style='--card-image: url("curve ball.png");'>
+                <div class="cover-label">Curveball</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclearvision2.html" style='--card-image: url("clearvision 2.webp");'>
+                <div class="cover-label">Clear Vision 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclearvision5.html" style='--card-image: url("clearvision 5 game cover.webp");'>
+                <div class="cover-label">Clear Vision 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcaptainlang.html" style='--card-image: url("captain lang.jpg");'>
+                <div class="cover-label">Captain Lang</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcheckers.html" style='--card-image: url("checkers.avif");'>
+                <div class="cover-label">Checkers</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clciviballs2.html" style='--card-image: url("civiballs 2.webp");'>
+                <div class="cover-label">Civiballs 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcrazycattle3d.html" style='--card-image: url("crazy cattle 3d.png");'>
+                <div class="cover-label">Crazy Cattle 3D</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangeplayerspack2.html" style='--card-image: url("cover orange journey players pack 2.jpg");'>
+                <div class="cover-label">Cover Orange: Players Pack 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcrunchball3000.html" style='--card-image: url("crunchball 3000.jpg");'>
+                <div class="cover-label">Crunchball 3000</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcareatscar2deluxe.html" style='--card-image: url("car eats car 2 deluxe.jpg");'>
+                <div class="cover-label">Car Eats Car 2 Deluxe</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclubbytheseal.html" style='--card-image: url("clubby the seal.webp");'>
+                <div class="cover-label">Clubby The Seal</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangejourneyknights.html" style='--card-image: url("cover orange journey knights.jpg");'>
+                <div class="cover-label">Cover Orange: Journey Knights</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangejourneypirates.html" style='--card-image: url("cover orange journey pirates.jpg");'>
+                <div class="cover-label">Cover Orange: Journey Pirates</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcatmario.html" style='--card-image: url("cat mario.png");'>
+                <div class="cover-label">Cat Mario</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcountmastersstickmangames.html" style='--card-image: url("count masters - stickman games.png");'>
+                <div class="cover-label">Count Masters</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcactusmccoy.html" style='--card-image: url("cactus mccoy.webp");'>
+                <div class="cover-label">Cactus McCoy</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcastlevaniadawnofsorrow.html" style='--card-image: url("castlevania dawn of sorrow.jpg");'>
+                <div class="cover-label">Castlevania: Dawn of Sorrow</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclearvision.html" style='--card-image: url("clearvision game.webp");'>
+                <div class="cover-label">Clear Vision</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcactusmccoy2.html" style='--card-image: url("cactus mccoy 2.jpg");'>
+                <div class="cover-label">Cactus McCoy 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclearvision4.html" style='--card-image: url("clearvision 4.jpg");'>
+                <div class="cover-label">Clear Vision 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorange.html" style='--card-image: url("cover orange.avif");'>
+                <div class="cover-label">Cover Orange</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcrazyfrogracer.html" style='--card-image: url("crazy frag racer.webp");'>
+                <div class="cover-label">Crazy Frog Racer</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clchaosfaction2.html" style='--card-image: url("chaos faction 2.jpg");'>
+                <div class="cover-label">Chaos Faction 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clchibiknight.html" style='--card-image: url("chibi knight.jpg");'>
+                <div class="cover-label">Chibi Knight</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clclearvision3.html" style='--card-image: url("clearvision 3.jpg");'>
+                <div class="cover-label">Clear Vision 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcontra3.html" style='--card-image: url("contra 3.jpg");'>
+                <div class="cover-label">Contra 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcoverorangejourneygangsters.html" style='--card-image: url("cover orange journey gangsters.jpg");'>
+                <div class="cover-label">Cover Orange: Journey Gangsters</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clcreeperworld2.html" style='--card-image: url("creeper world 2.jpg");'>
+                <div class="cover-label">Creeper World 2</div>
+            </div>
+
+            <!-- Added games (square button section) -->
+            <div class="game-launcher cover-only" data-url="clawesometanks2.html" style='--card-image: url("cl_awesometanks2.png");'>
+                <div class="cover-label">Awesome Tanks 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clavalanche.html" style='--card-image: url("cl_avalanche.png");'>
+                <div class="cover-label">Avalanche</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbattlekarts.html" style='--card-image: url("cl_battlekarts.png");'>
+                <div class="cover-label">Battle Karts</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clAwesomePirates.html" style='--card-image: url("cl_awesomepirates.png");'>
+                <div class="cover-label">Awesome Pirates</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackyardbaseball09.html" style='--card-image: url("cl_backyardbaseball09.png");'>
+                <div class="cover-label">Backyard Baseball '09</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbadicecream.html" style='--card-image: url("cl_badicecream.png");'>
+                <div class="cover-label">Bad Ice Cream</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbasketballlegends(1).html" style='--card-image: url("cl_basketballlegends1.png");'>
+                <div class="cover-label">Basketball Legends</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbasketballstars.html" style='--card-image: url("cl_basketballstars.png");'>
+                <div class="cover-label">Basketball Stars</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clawesomeplanes.html" style='--card-image: url("cl_awesomeplanes.png");'>
+                <div class="cover-label">Awesome Planes</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="balatro.html" style='--card-image: url("cl_balatrogba.png");'>
+                <div class="cover-label">Balatro</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbalatrogba.html" style='--card-image: url("gbabalatro.jpg");'>
+                <div class="cover-label">Balatro GBA</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbasketslamdunk2.html" style='--card-image: url("cl_basketslamdunk2.png");'>
+                <div class="cover-label">Basket Slam Dunk 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackyardsoccer.html" style='--card-image: url("cl_backyardsoccer.png");'>
+                <div class="cover-label">Backyard Soccer</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackyardbaseball10.html" style='--card-image: url("cl_backyardbaseball10.png");'>
+                <div class="cover-label">Backyard Baseball '10</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackrooms.html" style='--card-image: url("cl_backrooms_3d.png");'>
+                <div class="cover-label">Backrooms</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbanditgunslingers.html" style='--card-image: url("cl_banditgunslingers.png");'>
+                <div class="cover-label">Bandit Gunslingers</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clawesometanks.html" style='--card-image: url("cl_awesometanks_classic.png");'>
+                <div class="cover-label">Awesome Tanks</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackyardfootball.html" style='--card-image: url("cl_backyardfootball.png");'>
+                <div class="cover-label">Backyard Football</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbanjokazooie.html" style='--card-image: url("cl_banjokazooie.png");'>
+                <div class="cover-label">Banjo Kazooie</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbattlesim.html" style='--card-image: url("cl_battlesim.png");'>
+                <div class="cover-label">Battle Sim</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbabychiccoadventure.html" style='--card-image: url("cl_babychiccoadventure.png");'>
+                <div class="cover-label">Baby Chicco Adventure</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackrooms2D.html" style='--card-image: url("cl_backrooms2d.png");'>
+                <div class="cover-label">Backrooms 2D</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbaldisfunnewschoolultimate.html" style='--card-image: url("cl_baldisfunnewschoolultimate.png");'>
+                <div class="cover-label">Baldi's Fun New School Ultimate</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbasketbros.html" style='--card-image: url("cl_basketbros.png");'>
+                <div class="cover-label">Basket Bros</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clB3313.html" style='--card-image: url("cl_b3313.png");'>
+                <div class="cover-label">B3313</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbankrobbery2.html" style='--card-image: url("cl_bankrobbery2.png");'>
+                <div class="cover-label">Bank Robbery 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbackyardbaseball.html" style='--card-image: url("cl_backyardbaseball_classic.png");'>
+                <div class="cover-label">Backyard Baseball</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbas.html" style='--card-image: url("cl_bas.png");'>
+                <div class="cover-label">BAS</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbabykaizo.html" style='--card-image: url("cl_babykaizo.png");'>
+                <div class="cover-label">Baby Kaizo</div>
+            </div>
+
+            <div class="game-launcher cover-only" data-url="clbanjotooie.html" style='--card-image: url("cl_banjotooie.png");'>
+                <div class="cover-label">Banjo Tooie</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clearntodie.html" style='--card-image: url("clearntodie.jpg");'>
+                <div class="cover-label">Earn to Die</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clearntodie2.html" style='--card-image: url("clearntodie2.jpg");'>
+                <div class="cover-label">Earn to Die 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clearthtaken.html" style='--card-image: url("clearthtaken.jpg");'>
+                <div class="cover-label">Earth Taken</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clearthtaken2.html" style='--card-image: url("clearthtaken2.png");'>
+                <div class="cover-label">Earth Taken 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clearthtaken3.html" style='--card-image: url("clearthtaken3.jpg");'>
+                <div class="cover-label">Earth Taken 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cleffinghail.html" style='--card-image: url("cleffinghail.webp");'>
+                <div class="cover-label">Effing Hail</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cleffingmachines.html" style='--card-image: url("cleffingmachines.jpg");'>
+                <div class="cover-label">Effing Machines</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cleffingworms.html" style='--card-image: url("cleffingworms.webp");'>
+                <div class="cover-label">Effing Worms</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cleffingzombies.html" style='--card-image: url("cleffingzombies.webp");'>
+                <div class="cover-label">Effing Zombies</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clelectricman2.html" style='--card-image: url("clelectricman2.jpg");'>
+                <div class="cover-label">Electric Man 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clendlesswar4.html" style='--card-image: url("clendlesswar4.jpg");'>
+                <div class="cover-label">Endless War 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clendlesswar5wow.html" style='--card-image: url("clendlesswar5wow.webp");'>
+                <div class="cover-label">Endless War 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clendlesswar7.html" style='--card-image: url("clendlesswar7.webp");'>
+                <div class="cover-label">Endless War 7</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clepicbattlefantasy5.html" style='--card-image: url("clepicbattlefantasy5.png");'>
+                <div class="cover-label">Epic Battle Fantasy 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clescaperoad-2.html" style='--card-image: url("clescaperoad-2.jpg");'>
+                <div class="cover-label">Escape Road 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clexcitebike64.html" style='--card-image: url("clexcitebike64.jpg");'>
+                <div class="cover-label">Excite Bike 64</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfactoryballs.html" style='--card-image: url("clfactoryballs.jpg");'>
+                <div class="cover-label">Factory Balls</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfactoryballs2.html" style='--card-image: url("clfactoryballs2.jpg");'>
+                <div class="cover-label">Factory Balls 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfactoryballs3.html" style='--card-image: url("clfactoryballs3.jpg");'>
+                <div class="cover-label">Factory Balls 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfactoryballs4.html" style='--card-image: url("clfactoryballs4.jpg");'>
+                <div class="cover-label">Factory Balls 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfairytalevsonepiece.html" style='--card-image: url("clfairytalevsonepiece.webp");'>
+                <div class="cover-label">Fairy Tail VS. One Piece</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfancypantsadventure.html" style='--card-image: url("clfancypantsadventure.webp");'>
+                <div class="cover-label">Fancy Pants Adventure</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfancypantsadventure2.html" style='--card-image: url("clfancypantsadventure2.avif");'>
+                <div class="cover-label">Fancy Pants Adventure 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfancypantsadventure3.html" style='--card-image: url("clfancypantsadventure3.png");'>
+                <div class="cover-label">Fancy Pants Adventure 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfancysnowboarding.html" style='--card-image: url("clfancysnowboarding.jpg");'>
+                <div class="cover-label">Fancy Snow Boarding</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfattygenius.html" style='--card-image: url("clfattygenius.jpg");'>
+                <div class="cover-label">Fatty Genius</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfeedus.html" style='--card-image: url("clfeedus.png");'>
+                <div class="cover-label">Feed Us</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfeedus2.html" style='--card-image: url("clfeedus2.jpg");'>
+                <div class="cover-label">Feed Us 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfeedus3.html" style='--card-image: url("clfeedus3.webp");'>
+                <div class="cover-label">Feed Us 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfeedus4.html" style='--card-image: url("clfeedus4.webp");'>
+                <div class="cover-label">Feed Us 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfeedus5.html" style='--card-image: url("clfeedus5.webp");'>
+                <div class="cover-label">Feed Us 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic1.html" style='--card-image: url("clFFsonic1.jpg");'>
+                <div class="cover-label">Final Fantasy Sonic</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic2.html" style='--card-image: url("clFFsonic2.jpg");'>
+                <div class="cover-label">Final Fantasy Sonic 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic3.html" style='--card-image: url("clFFsonic3.jpg");'>
+                <div class="cover-label">Final Fantasy Sonic 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic4.html" style='--card-image: url("clFFsonic4.jpg");'>
+                <div class="cover-label">Final Fantasy Sonic 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic5.html" style='--card-image: url("clFFsonic5.jpg");'>
+                <div class="cover-label">Final Fantacy Sonic 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFFsonic61.html" style='--card-image: url("clFFsonic61.jpg");'>
+                <div class="cover-label">Final Fantasy Sonic 6</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clFIFA99.html" style='--card-image: url("clFIFA99.jpg");'>
+                <div class="cover-label">FIFA99</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfinalninja.html" style='--card-image: url("clfinalninja.jpg");'>
+                <div class="cover-label">Final Ninja</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfireboyandwatergirl.html" style='--card-image: url("clfireboyandwatergirl.jpg");'>
+                <div class="cover-label">Fire Boy and Water Girl</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfivenightsatbaldisredone.html" style='--card-image: url("clfivenightsatbaldisredone.gif");'>
+                <div class="cover-label">Five Nights at Baldi's REDONE</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clflappybird.html" style='--card-image: url("clflappybird.webp");'>
+                <div class="cover-label">Flappy Bird</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clflashsonic.html" style='--card-image: url("clflashsonic.webp");'>
+                <div class="cover-label">Ultimate Flash Sonic</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfloodrunner.html" style='--card-image: url("clfloodrunner.jpg");'>
+                <div class="cover-label">Floodrunner</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfloodrunner2.html" style='--card-image: url("clfloodrunner2.jpg");'>
+                <div class="cover-label">Floodrunner 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfloodrunner4.html" style='--card-image: url("clfloodrunner4.jpg");'>
+                <div class="cover-label">Floodrunner 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfunnyshooter2.html" style='--card-image: url("clfunnyshooter2.jpeg");'>
+                <div class="cover-label">Funny Shooter 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfzerox.html" style='--card-image: url("clfzerox.jpg");'>
+                <div class="cover-label">F-ZERO X</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgdsubzero.html" style='--card-image: url("clgdsubzero.png");'>
+                <div class="cover-label">Geometry Dash SubZero</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clGettothetopalthoughthereisnotop.html" style='--card-image: url("clGettothetopalthoughthereisnotop.webp");'>
+                <div class="cover-label">Get to the Top although there is No Top</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgoingballs.html" style='--card-image: url("clgoingballs.webp");'>
+                <div class="cover-label">Going Balls</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgrannyy.html" style='--card-image: url("clgrannyy.jpg");'>
+                <div class="cover-label">Granny</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgranturismo.html" style='--card-image: url("clgranturismo.jpg");'>
+                <div class="cover-label">Gran Turismo</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgrowagarden.html" style='--card-image: url("clgrowagarden.avif");'>
+                <div class="cover-label">Grow a Garden</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgtaalty.html" style='--card-image: url("clgtaalty.jpg");'>
+                <div class="cover-label">GTA</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgunmayhem2.html" style='--card-image: url("clgunmayhem2.webp");'>
+                <div class="cover-label">Gun Mayhem 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhandsofwar(1)(1).html" style='--card-image: url("clhandsofwar(1)(1).webp");'>
+                <div class="cover-label">Hands of War</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clharvestmoon64.html" style='--card-image: url("clharvestmoon64.jpg");'>
+                <div class="cover-label">Harvest Moon 64</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clheartandsoul.html" style='--card-image: url("clheartandsoul.png");'>
+                <div class="cover-label">Heart and Soul</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo.html" style='--card-image: url("clhobo.webp");'>
+                <div class="cover-label">Hobo</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo2.html" style='--card-image: url("clhobo2.jpg");'>
+                <div class="cover-label">Hobo 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo3.html" style='--card-image: url("clhobo3.jpg");'>
+                <div class="cover-label">Hobo 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo4.html" style='--card-image: url("clhobo4.jpg");'>
+                <div class="cover-label">Hobo 4</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo5.html" style='--card-image: url("clhobo5.jpg");'>
+                <div class="cover-label">Hobo 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo6.html" style='--card-image: url("clhobo6.webp");'>
+                <div class="cover-label">Hobo 6</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhobo7.html" style='--card-image: url("clhobo7.jpg");'>
+                <div class="cover-label">Hobo 7</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhomesheephome.html" style='--card-image: url("clhomesheephome.jpg");'>
+                <div class="cover-label">Home Sheep Home</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhungrylamu.html" style='--card-image: url("clhungrylamu.png");'>
+                <div class="cover-label">Hungry Lamu</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="climpossiblequiz2.html" style='--card-image: url("climpossiblequiz2.jpg");'>
+                <div class="cover-label">Impossible Quiz 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clinteractivebuddy.html" style='--card-image: url("clinteractivebuddy.webp");'>
+                <div class="cover-label">Interactive Buddy</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgunmayhemredux.html" style='--card-image: url("clgunmayhemredux.jpg");'>
+                <div class="cover-label">Gun Mayhem REDUX</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhappywheels.html" style='--card-image: url("clhappywheels.jpg");'>
+                <div class="cover-label">Happy Wheels</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhotwax.html" style='--card-image: url("clhotwax.png");'>
+                <div class="cover-label">Hot Wax</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfreerider.html" style='--card-image: url("clfreerider.png");'>
+                <div class="cover-label">Free Rider</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfreerider2.html" style='--card-image: url("clfreerider2.jpg");'>
+                <div class="cover-label">Free Rider 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clfreerider3.html" style='--card-image: url("clfreerider3.png");'>
+                <div class="cover-label">Free Rider 3</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgangsterbros.html" style='--card-image: url("clgangsterbros.webp");'>
+                <div class="cover-label">Gangster Bros</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clggshinobi.html" style='--card-image: url("clggshinobi.jpg");'>
+                <div class="cover-label">Shinobi</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clglover.html" style='--card-image: url("clglover.avif");'>
+                <div class="cover-label">Glover</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgoldeneye007.html" style='--card-image: url("clgoldeneye007.jpg");'>
+                <div class="cover-label">Golden Eye 007</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgoldminer.html" style='--card-image: url("clgoldminer.jpg");'>
+                <div class="cover-label">Gold Miner</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgranddad.html" style='--card-image: url("clgranddad.webp");'>
+                <div class="cover-label">Granddad</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgunblood.html" style='--card-image: url("clgunblood.png");'>
+                <div class="cover-label">Gun Blood</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clgunmayhem.html" style='--card-image: url("clgunmayhem.png");'>
+                <div class="cover-label">Gun Mayhem</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhauntthehouse.html" style='--card-image: url("clhauntthehouse.jpg");'>
+                <div class="cover-label">Haunt the House</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clhipsterkickball.html" style='--card-image: url("clhipsterkickball.png");'>
+                <div class="cover-label">Hipster Kickball</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clidledice.html" style='--card-image: url("clidledice.png");'>
+                <div class="cover-label">Idle Dice</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="climpossiblequiz.html" style='--card-image: url("climpossiblequiz.jpg");'>
+                <div class="cover-label">Impossible Quiz</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clinkgame.html" style='--card-image: url("clinkgame.webp");'>
+                <div class="cover-label">Ink Game</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clintospace.html" style='--card-image: url("clintospace.png");'>
+                <div class="cover-label">Into Space</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clintospace2.html" style='--card-image: url("clintospace2.jpg");'>
+                <div class="cover-label">Into Space 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clintospace3.html" style='--card-image: url("clintospace3.jpg");'>
+                <div class="cover-label">Into Space 2</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="cliqball.html" style='--card-image: url("cliqball.jpg");'>
+                <div class="cover-label">IQ Ball</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clriddleschool5.html" style='--card-image: url("clriddleschool5.jpg");'>
+                <div class="cover-label">Riddle School 5</div>
+            </div>
+            <div class="game-launcher cover-only" data-url="clbuildnowgg.html" style='--card-image: url("clbuildnowgg.jfif");'>
+                <div class="cover-label">BuildNow GG</div>
+            </div>
+
+        </div>
+    </div>
+
+    <nav class="dock" aria-label="Quick navigation">
+        <a class="brand-mark" href="index.html" aria-label="Home">K</a>
+        <a href="games.html" aria-label="Games"><img class="dock-icon" src="dock-game-icon.svg" alt=""></a>
+        <a href="movies.html" target="_top" aria-label="Movies" title="Movies">▤</a>
+    </nav>
+
+    <script src="imported-game-covers.js?v=20261017-artwork"></script>
+    <script src="custom-game-covers.js?v=20261018-ovo"></script>
+    <script>window.KERMIT_GAME_COVERS['clootmasterquest.html'] = 'game-covers/zelda-master-quest.jpg';</script>
+    <script>window.KERMIT_GAME_COVERS['clocarinaoftime.html'] = 'game-covers/zelda-ocarina-of-time.jpg';</script>
+    <script src="imported-games.js?v=20261018-remove-hyperdrive"></script>
+    <script src="imported-games-p.js?v=20261018-pyrotoad"></script>
+    <script src="tglsc-games.js?v=20261018-lazy"></script>
+<link rel="stylesheet" href="emulator-saves.css?v=2">
+<script src="emulator-saves.js?v=7"></script>
+<script src="script.js?v=20261018-cdn-order"></script>
+    <script src="featured-slideshow.js?v=24"></script>
+    <script src="joker-finder.js?v=1"></script>
+    <script src="games-space.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+const PREFIX = "Balatro_vanilla_";
+const originalOpen = indexedDB.open;
+const originalDeleteDatabase = indexedDB.deleteDatabase;
+indexedDB.open = function(name, version) {
+const prefixedName = PREFIX + name;
+return version !== undefined?originalOpen.call(this, prefixedName, version):originalOpen.call(this, prefixedName);
+};
+indexedDB.deleteDatabase = function(name) {
+const prefixedName = PREFIX + name;
+return originalDeleteDatabase.call(this, prefixedName);
+};
+</script>
+<script src="balatro-saves.js?v=2"></script>
+<script src="balatro-love.js?v=1"></script>
+<title>Love.js</title>
+<style>
+#canvas {
+position:fixed !important;
+inset:0 !important;
+display:block;
+width:100% !important;
+height:100% !important;
+max-width:100%;
+max-height:100%;
+margin:0 !important;
+border:0;
+object-fit:contain;
+}
+html, body {
+width:100%;
+height:100%;
+margin:0;
+padding:0;
+overflow:hidden !important;
+overscroll-behavior:none;
+background:#000;
+}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script src="https://huggingface.co/spaces/Katsugachi/Balatro/resolve/main/module.js"></script>
+<script>
+(async()=>{
+const d=await getSource();
+Module={
+INITIAL_MEMORY:2**28,
+locateFile: name => 'https://huggingface.co/spaces/Katsugachi/Balatro/resolve/main/' + name,
+canvas:canvas,
+printErr:console.error,
+arguments:["game.love"]
+};
+Module.preRun = [function(){
+Module.addRunDependency("fp game.love");
+var ptr = Module.getMemory(d.length);
+Module['HEAPU8'].set(d, ptr);
+Module.FS_createDataFile('/', "game.love", d, true, true, true);
+Module.removeRunDependency("fp game.love");
+}];
+window.KermitBalatroRuntime = Module;
+Love(Module);
+})()
+</script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://cdn.jsdelivr.net/gh/genizy/web-port@latest/hotline-miami/">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <title>HOTLINE MIAMI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            overflow: hidden;
+            transform: scale(1);
+            transform-origin: center center;
+            animation: zoomOut 2s ease-out forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        @keyframes zoomOut {
+            0%   { transform: scale(1); }
+            100% { transform: scale(0.95); }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #ff0080, #00ffe5);
+            mix-blend-mode: screen;
+            opacity: 0.15;
+            animation: flicker 1s infinite steps(2);
+            z-index: 0;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.05; }
+        }
+
+        canvas {
+            display: block;
+            border: none;
+            image-rendering: pixelated;
+            z-index: 1;
+            position: relative;
+        }
+
+        #loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #ff0080;
+            text-shadow: 2px 2px #00ffe5, -2px -2px #ffea00;
+            animation: pulse 0.6s infinite alternate, glitch 1s infinite;
+            letter-spacing: 2px;
+            pointer-events: none; 
+            z-index: 2;
+        }
+        @keyframes pulse {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to   { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #00ffe5, -2px -2px #ffea00; }
+            20% { text-shadow: -2px 2px #00ffe5, 2px -2px #ffea00; }
+            40% { text-shadow: 2px -2px #00ffe5, -2px 2px #ffea00; }
+            60% { text-shadow: -2px -2px #00ffe5, 2px 2px #ffea00; }
+            80% { text-shadow: 0px 0px #00ffe5, 0px 0px #ffea00; }
+            100% { text-shadow: 2px 2px #00ffe5, -2px -2px #ffea00; }
+        }
+    </style>
+</head>
+<body>
+<script>
+  const OriginalXHR = window.XMLHttpRequest;
+
+  function InterceptedXHR() {
+    const xhr = new OriginalXHR();
+
+    let blocked = false;
+
+    const originalOpen = xhr.open;
+    xhr.open = function(method, url, async, user, password) {
+      blocked = (url.endsWith("steamon") || url.endsWith("achievements.dat") || url.endsWith("mask.tmp") || url.endsWith("surfaces") || url.endsWith("steamoff") || url.endsWith("skip") || url.endsWith("restartmusic") || url.endsWith("xbox") || url.endsWith("volume.dat") || url.endsWith("keyboard.dat") || url.endsWith("volume.dat") || url.endsWith("blood") || url.endsWith("volume.dat") || url.endsWith("alienware"));
+      return originalOpen.apply(this, arguments);
+    };
+
+    const originalSend = xhr.send;
+    xhr.send = function(body) {
+      if (blocked) {
+        // simulate async 404 response
+        setTimeout(() => {
+          this.readyState = 4;
+          this.status = 404;
+          this.statusText = "Not Found";
+          this.response = "Not Found";
+          this.responseText = "Not Found";
+
+          if (typeof this.onreadystatechange === "function") {
+            this.onreadystatechange();
+          }
+          if (typeof this.onload === "function") {
+            this.onload();
+          }
+        }, 0);
+        return;
+      }
+      return originalSend.apply(this, arguments);
+    };
+
+    return xhr;
+  }
+
+  window.XMLHttpRequest = function () {
+    return new InterceptedXHR();
+  };
+</script>
+
+
+
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
+        <canvas id="canvas" width="1920" height="1080">
+            <p>Your browser doesn't support HTML5 canvas.</p>
+        </canvas>
+    </div>
+    <div id="loading-text"> </div>
+    <script type="text/javascript" src="html5game/HotlineMiami.js?PPPYB=938827661"></script>
+    <script>
+        window.onload = () => {
+            const loader = document.getElementById("loading-text");
+            loader.style.display = "block";
+            GameMaker_Init();
+            setTimeout(() => loader.style.display = "none", 4000);
+        };
+    </script>
+
+                      <!-- Downloaded From Noah's Tutoring Hub -->
+                      <script>
+                          console.log('%c🔄 Loading game downloaded from Noah\'s Tutoring Hub', 'color: #c27c15; font-weight: bold;');
+                      </script>
+                      
+                      <div id="noahs-watermark" 
+                           onclick="window.open('https://noahs-calculus-tutor.pages.dev/', '_blank'); this.style.transform='scale(0.95)'; setTimeout(() => this.style.transform='scale(1)', 100);"
+                           ontouchstart="this.style.opacity='0.7';"
+                           ontouchend="this.style.opacity='0.9'; setTimeout(() => window.open('https://noahs-calculus-tutor.pages.dev/', '_blank'), 100);"
+                           style="
+                              all: initial !important;
+                              position: fixed !important;
+                              bottom: 10px !important;
+                              right: 10px !important;
+                              background: rgba(0, 0, 0, 0.85) !important;
+                              color: #c27c15 !important;
+                              padding: 8px 12px !important;
+                              border-radius: 5px !important;
+                              font-family: 'Courier New', monospace !important;
+                              font-size: 12px !important;
+                              z-index: 2147483647 !important;
+                              border: 1px solid #c27c15 !important;
+                              opacity: 0.9 !important;
+                              pointer-events: auto !important;
+                              cursor: pointer !important;
+                              display: flex !important;
+                              align-items: center !important;
+                              gap: 8px !important;
+                              backdrop-filter: blur(4px) !important;
+                              box-shadow: 0 0 15px rgba(194, 124, 21, 0.4) !important;
+                              transition: opacity 0.2s, transform 0.1s !important;
+                              user-select: none !important;
+                              -webkit-tap-highlight-color: transparent !important;
+                          ">
+                          <img src="https://raw.githubusercontent.com/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor/master/cuh.png" 
+                               alt="Noah's Tutoring Hub" 
+                               style="width: 16px !important; height: 16px !important; border-radius: 3px !important; pointer-events: none !important;"
+                               onerror="this.style.display='none'">
+                          <span style="pointer-events: none !important;">Downloaded from Noah's Tutoring Hub</span>
+                      </div>
+                   
+                      <script>
+                          (function() {
+                              var gameTitle = "Hotline Miami";
+
+                              function createWatermark() {
+                                  const watermark = document.createElement('div');
+                                  watermark.id = 'noahs-watermark';
+                    
+                                  const logo = document.createElement('img');
+                                  logo.src = 'https://raw.githubusercontent.com/NoahsAmazingTutoringHelp/Noahs-Calculus-Tutor/master/cuh.png';
+                                  logo.alt = "Noah's Tutoring Hub";
+                                  logo.style.cssText = 'width: 16px !important; height: 16px !important; border-radius: 3px !important; display: block !important; pointer-events: none !important;';
+
+                                  const text = document.createElement('span');
+                                  text.textContent = 'Downloaded from Noah\'s Tutoring Hub';
+                                  text.style.cssText = 'pointer-events: none !important;';
+
+                                  watermark.appendChild(logo);
+                                  watermark.appendChild(text);
+
+                                  watermark.setAttribute('style', 
+                                      'all: initial !important;' +
+                                      'position: fixed !important;' +
+                                      'bottom: 10px !important;' +
+                                      'right: 10px !important;' +
+                                      'background: rgba(0, 0, 0, 0.85) !important;' +
+                                      'color: #c27c15 !important;' +
+                                      'padding: 8px 12px !important;' +
+                                      'border-radius: 5px !important;' +
+                                      'font-family: \'Courier New\', monospace !important;' +
+                                      'font-size: 12px !important;' +
+                                      'z-index: 2147483647 !important;' +
+                                      'border: 1px solid #c27c15 !important;' +
+                                      'opacity: 0.9 !important;' +
+                                      'pointer-events: auto !important;' +
+                                      'cursor: pointer !important;' +
+                                      'display: flex !important;' +
+                                      'align-items: center !important;' +
+                                      'gap: 8px !important;' +
+                                      'backdrop-filter: blur(4px) !important;' +
+                                      'box-shadow: 0 0 15px rgba(194, 124, 21, 0.4) !important;' +
+                                      'transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s, border-color 0.2s !important;' +
+                                      'user-select: none !important;' +
+                                      '-webkit-tap-highlight-color: transparent !important;'
+                                  );
+
+                                  logo.onerror = function() {
+                                      this.style.display = 'none';
+                                      watermark.setAttribute('style', watermark.getAttribute('style') + 'padding-left: 12px !important;');
+                                  };
+
+                                  watermark.setAttribute('role', 'button');
+                                  watermark.setAttribute('aria-label', 'Visit Noah\'s Tutoring Hub website');
+                                  watermark.setAttribute('tabindex', '0');
+
+                                  watermark.addEventListener('click', function(e) {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+
+                                      this.style.transform = 'scale(0.95) !important';
+                                      this.style.transition = 'transform 0.1s !important';
+                                      
+                                      setTimeout(() => {
+                                          this.style.transform = 'scale(1) !important';
+                                          window.open('https://noahs-calculus-tutor.pages.dev/', '_blank');
+                                      }, 100);
+                                  });
+
+                                  watermark.addEventListener('touchstart', function(e) {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      this.style.opacity = '0.7 !important';
+                                  });
+                                  
+                                  watermark.addEventListener('touchend', function(e) {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      this.style.opacity = '0.9 !important';
+
+                                      this.style.transform = 'scale(0.95) !important';
+                                      
+                                      setTimeout(() => {
+                                          this.style.transform = 'scale(1) !important';
+                                          window.open('https://noahs-calculus-tutor.pages.dev/', '_blank');
+                                      }, 100);
+                                  });
+
+                                  watermark.addEventListener('keydown', function(e) {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                          e.preventDefault();
+                                          window.open('https://noahs-calculus-tutor.pages.dev/', '_blank');
+                                      }
+                                  });
+
+                                  watermark.addEventListener('mouseenter', function() {
+                                      this.style.opacity = '1 !important';
+                                      this.style.transform = 'translateY(-2px) !important';
+                                      this.style.boxShadow = '0 0 25px rgba(194, 124, 21, 0.8) !important';
+                                      this.style.borderColor = '#e69500 !important';
+                                  });
+                                  
+                                  watermark.addEventListener('mouseleave', function() {
+                                      this.style.opacity = '0.9 !important';
+                                      this.style.transform = 'translateY(0) !important';
+                                      this.style.boxShadow = '0 0 15px rgba(194, 124, 21, 0.4) !important';
+                                      this.style.borderColor = '#c27c15 !important';
+                                  });
+
+                                  watermark.addEventListener('contextmenu', function(e) {
+                                      e.preventDefault();
+                                      return false;
+                                  });
+                                  
+                                  return watermark;
+                              }
+
+                              function addWatermark() {
+                                  const existing = document.getElementById('noahs-watermark');
+                                  if (!existing) {
+                                      document.body.appendChild(createWatermark());
+                                  }
+                              }
+
+                              function protectWatermark() {
+                                  addWatermark();
+
+                                  const observer = new MutationObserver(function(mutations) {
+                                      mutations.forEach(function(mutation) {
+                                          if (mutation.removedNodes) {
+                                              Array.from(mutation.removedNodes).forEach(function(node) {
+                                                  if (node.id === 'noahs-watermark' || 
+                                                      (node.querySelector && node.querySelector('#noahs-watermark'))) {
+                                                      setTimeout(addWatermark, 100);
+                                                  }
+                                              });
+                                          }
+                                      });
+                                  });
+                                  
+                                  observer.observe(document.body, {
+                                      childList: true,
+                                      subtree: true
+                                  });
+
+                                  setInterval(addWatermark, 5000);
+                              }
+
+                              if (document.readyState === 'loading') {
+                                  document.addEventListener('DOMContentLoaded', protectWatermark);
+                              } else {
+                                  protectWatermark();
+                              }
+
+                              console.log('%c🎮 Game: "' + gameTitle + '", Downloaded from Noah\'s Tutoring Hub', 
+                                  'color: #c27c15; font-weight: bold; font-size: 14px;');
+                              console.log('%c📚 Visit https://noahs-calculus-tutor.pages.dev/ for more games!', 
+                                  'color: #e69500;');
+                          })();
+                      </script>
+                   </body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="The Legend of Zelda: Ocarina of Time cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1" gradientTransform="rotate(43 .5 .5)">
+      <stop offset="0" stop-color="#be123c"/><stop offset=".58" stop-color="#ea580c"/><stop offset="1" stop-color="#080b13"/>
+    </linearGradient>
+    <radialGradient id="glow"><stop stop-color="#facc15" stop-opacity=".85"/><stop offset="1" stop-color="#facc15" stop-opacity="0"/></radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity=".65"/></filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".055"/></pattern>
+  </defs>
+  <rect width="512" height="512" rx="32" fill="url(#bg)"/>
+  <circle cx="222" cy="187" r="78" fill="url(#glow)"/>
+  <circle cx="402" cy="167" r="113" fill="none" stroke="#facc15" stroke-opacity=".18" stroke-width="3"/>
+  <rect width="512" height="512" rx="32" fill="url(#grid)"/>
+  <g opacity=".2" fill="#fff"><path d="M256 66l-88 153h176zM168 219L80 372h176zM344 219l-88 153h176z"/></g>
+  <rect x="24" y="24" width="184" height="34" rx="17" fill="#05070c" fill-opacity=".64" stroke="#fff" stroke-opacity=".18"/>
+  <text x="40" y="47" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.4">NINTENDO 64</text>
+  <rect x="24" y="292" width="464" height="190" rx="24" fill="#05070c" fill-opacity=".76" stroke="#fff" stroke-opacity=".14"/>
+  <text x="38" y="306.5" fill="#fff" font-family="Arial Black,Arial,sans-serif" font-size="39" font-weight="900" filter="url(#shadow)"><tspan x="38" dy="0">The Legend of Zelda:</tspan><tspan x="38" dy="47">Ocarina of Time</tspan></text>
+  <text x="40" y="463" fill="#facc15" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="2">KERMIT WEB</text>
+</svg>

@@ -1,0 +1,10 @@
+.account-panel { box-sizing:border-box; width:min(420px,calc(100vw - 32px)); padding:36px 28px 28px; border:1px solid #ffffff28; border-radius:20px; background:#11151e; color:#f5f7fa; text-align:center; font-family:Nunito,system-ui,sans-serif; box-shadow:0 25px 90px #0009; }
+.account-panel::backdrop { background:#0009; backdrop-filter:blur(5px); }
+.account-close { position:absolute; top:10px; right:12px; border:0; background:transparent; color:#fff; font-size:28px; cursor:pointer; }
+.account-symbol { width:42px; height:42px; margin:8px auto; }
+.account-panel h2 { font-size:24px; margin:16px 0 8px; }
+.account-panel p { font-size:14px; line-height:1.6; color:#b9c3d4; }
+.google-signin { width:100%; margin:14px 0 4px; padding:13px; border:1px solid #c9d0da; border-radius:9px; background:#f5f6f8; color:#313744; font:600 15px system-ui,sans-serif; }
+.google-signin:disabled { opacity:.6; cursor:not-allowed; }
+.account-panel .account-status { color:#e8c77a; }
+.account-panel small { display:block; color:#929eaf; line-height:1.5; }

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "undertale",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/391540/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/391540/"
+  },
+  {
+    "name": "deltarune",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/1671210/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/1671210/"
+  },
+  {
+    "name": "hollow-knight",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/367520/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/367520/"
+  },
+  {
+    "name": "balatro",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/2379780/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/2379780/"
+  },
+  {
+    "name": "isaac",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/113200/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/113200/"
+  },
+  {
+    "name": "portal",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/400/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/400/"
+  },
+  {
+    "name": "max-payne",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/12140/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/12140/"
+  },
+  {
+    "name": "metal-gear-solid",
+    "url": "https://cdn.akamai.steamstatic.com/steam/apps/2131630/library_hero.jpg",
+    "source": "https://store.steampowered.com/app/2131630/"
+  },
+  {
+    "name": "minecraft",
+    "url": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/key-art/NewKeyArt_Header.jpg",
+    "source": "https://www.minecraft.net/en-us/article/key-art-update"
+  },
+  {
+    "name": "1v1lol",
+    "url": "https://1v1lolreloaded.com/assets/hero/poster.webp",
+    "source": "https://1v1lolreloaded.com/"
+  }
+]

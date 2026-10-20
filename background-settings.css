@@ -1,0 +1,11 @@
+.background-settings{width:min(760px,calc(100vw - 32px));max-height:88dvh;overflow:auto;background:#101b2a;color:#e6edf3;border:1px solid #ffffff25;border-radius:22px;padding:28px;box-shadow:0 25px 90px #0009;font:14px/1.6 system-ui;scrollbar-color:#43596d #101b2a}
+.background-settings::backdrop{background:#000b;backdrop-filter:blur(8px)}
+.background-settings header{display:flex;justify-content:space-between;align-items:center;gap:20px}.background-settings h2{margin:0;font-size:26px}.background-settings p{color:#aabfd0}
+.background-settings button{font:inherit;border:1px solid #ffffff25;border-radius:12px;padding:10px 16px;background:#1e3045;color:#e6edf3;cursor:pointer}.background-settings button:focus-visible,.background-settings-open:focus-visible{outline:3px solid #a9e8db;outline-offset:3px}
+.background-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0}.background-options .background-option{text-align:left;min-height:90px;background:linear-gradient(125deg,#22394e,#142232);display:flex;flex-direction:column;justify-content:center;gap:6px}.background-option small{color:#9fb9cc}.background-options .background-option[aria-pressed=true]{border-color:#acebd7;box-shadow:inset 0 0 0 1px #acebd7;background:#23423f}.background-option[aria-pressed=true] strong:after{content:' ✓';color:#acebd7}
+.dock .background-settings-open,.background-settings-open{width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:14px;background:transparent;color:#f0f6fc;font:26px system-ui;cursor:pointer}.background-settings-open:hover{background:#ffffff20}.settings-floating{position:fixed;right:20px;bottom:20px;z-index:1000;background:#17283c}
+.user-background{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5);z-index:-1;pointer-events:none}
+@media(max-width:550px){.background-settings{padding:20px}.background-options{grid-template-columns:1fr}.dock .background-settings-open{width:34px;height:36px;font-size:22px}}
+.background-options .background-option{padding:0 0 14px;overflow:hidden;gap:8px}
+.background-option .background-thumbnail{display:block;width:100%;height:145px;object-fit:cover;background:#0b1420;margin-bottom:6px;color:#9fb9cc;font-size:12px}
+.background-option strong,.background-option small{padding-inline:14px}

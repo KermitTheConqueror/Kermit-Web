@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kermit Web</title>
+  <link rel="icon" type="image/svg+xml" href="kermit-web-logo.svg?v=2">
+  <link rel="stylesheet" href="landing.css?v=20261018-home-links">
+  <link rel="stylesheet" href="dock.css?v=20261017-active-page">
+  <link rel="stylesheet" href="video-background.css?v=4">
+<script src="background-settings.js?v=1" defer></script></head>
+<body>
+  <video class="site-background-video" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"><source src="background-video.mp4" type="video/mp4"></video>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="site-search" id="site-search" hidden>
+    <div class="search-backdrop" aria-hidden="true"></div>
+    <input id="site-search-input" type="search" placeholder="Search any game..." autocomplete="off">
+    <div id="site-search-results"></div>
+  </div>
+
+  <main class="hero">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow" id="greeting">Welcome to,</p>
+      <h1 id="page-title">Kermit Web<span class="home-beta"><img src="beta-badge.svg" alt="BETA" width="115" height="35"></span></h1>
+      <p class="tagline">Your favorite games, all in one place.</p>
+
+      <a class="play-card" href="games.html">
+        <span class="icon-box" aria-hidden="true"><img class="play-icon" src="dock-game-icon.svg" alt=""></span>
+        <span><strong>Start Playing</strong><small>Open the full game library</small></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="play-card" href="movies.html">
+        <span class="icon-box" aria-hidden="true">▤</span>
+        <span><strong>Movies</strong><small>Browse movies and shows</small></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="play-card" href="cloud.html">
+        <span class="icon-box" aria-hidden="true">☁</span>
+        <span><strong>Cloud Gaming</strong><small>Open the cloud game library</small></span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+    </section>
+
+    <section class="game-wall" aria-label="Featured games">
+      <div class="wall-column wall-column-a">
+        <a href="Minecraft 1.12.2.html" aria-label="Play Minecraft 1.12.2"><img src="1.12.2_card.png" alt="Minecraft 1.12.2"></a>
+        <a href="DELTARUNE.html" aria-label="Play Deltarune"><img src="deltarune.png" alt="Deltarune"></a>
+        <a href="badpiggies.html" aria-label="Play Bad Piggies"><img src="badpiggies_card.png" alt="Bad Piggies"></a>
+        <a href="clchainofmemories.html" aria-label="Play Kingdom Hearts: Chain of Memories"><img src="chain of memories.jpg" alt="Kingdom Hearts: Chain of Memories"></a>
+        <a href="Side Effects.html" aria-label="Play Side Effects"><img src="Effects_card.png" alt="Side Effects"></a>
+        <a href="clinkgame.html" aria-label="Play Ink Game"><img src="clinkgame.webp" alt="Ink Game"></a>
+        <a href="blockblast.html" aria-label="Play Blockblast"><img src="blockblast_card.png" alt="Blockblast"></a>
+        <a href="clbadparenting.html" aria-label="Play Bad Parenting 1"><img src="1_card.png" alt="Bad Parenting 1"></a>
+      </div>
+      <div class="wall-column wall-column-b">
+        <a href="1v1lol-reloaded.html" aria-label="Play 1v1LOL"><img src="cl1v1lol_card.png" alt="1v1LOL"></a>
+        <a href="Hollow Knight.html" aria-label="Play Hollow Knight"><img src="Hollow_Knight_first_cover_art.webp.png" alt="Hollow Knight"></a>
+        <a href="clbackrooms.html" aria-label="Play Backrooms"><img src="cl_backrooms_3d.png" alt="Backrooms"></a>
+        <a href="Steal A Brainrot.html" aria-label="Play Steal A Brainrot"><img src="Brainrot_card.png" alt="Steal A Brainrot"></a>
+        <a href="99nightsitf.html" aria-label="Play 99 Nights ITF"><img src="99nightsitf_card.png" alt="99 Nights ITF"></a>
+        <a href="clpokemonemerald.html" aria-label="Play Pokémon Emerald"><img src="game-covers/cover-210.png" alt="Pokémon Emerald"></a>
+        <a href="Candy Crush.html" aria-label="Play Candy Crush"><img src="Crush_card.png" alt="Candy Crush"></a>
+        <a href="clbattlekarts.html" aria-label="Play Battle Karts"><img src="cl_battlekarts.png" alt="Battle Karts"></a>
+      </div>
+      <div class="wall-column wall-column-c">
+        <a href="Undertale.html" aria-label="Play Undertale"><img src="undertale.jpg" alt="Undertale"></a>
+        <a href="Binding of Issac_ Wrath of the Lamb.html" aria-label="Play Binding of Isaac: Wrath of the Lamb"><img src="Lamb_card.png" alt="Binding of Isaac: Wrath of the Lamb"></a>
+        <a href="balatro.html" aria-label="Play Balatro"><img src="cl_balatrogba.png" alt="Balatro"></a>
+        <a href="clcountmastersstickmangames.html" aria-label="Play Count Masters"><img src="count masters - stickman games.png" alt="Count Masters"></a>
+        <a href="Boom Slingers_ Reboom.html" aria-label="Play Boom Slingers: Reboom"><img src="Reboom_card.png" alt="Boom Slingers: Reboom"></a>
+        <a href="clfunnyshooter2.html" aria-label="Play Funny Shooter 2"><img src="clfunnyshooter2.jpeg" alt="Funny Shooter 2"></a>
+        <a href="Undertale Yellow.html" aria-label="Play Undertale Yellow"><img src="Undertale_Yellow_artwork_Game_Jolt.webp" alt="Undertale Yellow"></a>
+        <a href="clgrowagarden.html" aria-label="Play Grow a Garden"><img src="clgrowagarden.avif" alt="Grow a Garden"></a>
+      </div>
+    </section>
+  </main>
+
+  <section class="catalog-shell" id="catalog-shell" aria-label="Game library" hidden>
+    <iframe id="catalog-frame" title="Kermit Web game library"></iframe>
+  </section>
+
+  <nav class="dock" aria-label="Quick navigation">
+    <a class="brand-mark" href="index.html" aria-label="Home">K</a>
+    <a href="games.html" aria-label="Games"><img class="dock-icon" src="dock-game-icon.svg" alt=""></a>
+    <a href="movies.html" aria-label="Movies" title="Movies">▤</a>
+    <a href="cloud.html" aria-label="Cloud Gaming" title="Cloud Gaming">☁</a>
+    <a href="repositories.html" aria-label="Repositories" title="GitHub Repositories">⌘</a>
+  </nav>
+
+  <link rel="stylesheet" href="section-loader.css?v=2">
+  <script src="landing.js?v=20261018-repositories"></script>
+</body>
+</html>

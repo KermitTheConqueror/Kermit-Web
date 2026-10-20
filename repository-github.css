@@ -1,0 +1,43 @@
+/* Deliberately scoped to the opened repository, never the discovery page. */
+.repo-run-warning{width:min(480px,calc(100vw - 32px));max-height:90dvh;overflow:auto;padding:28px;border:1px solid #e3b34166;border-radius:20px;background:#111b29;color:#e6edf3;box-shadow:0 24px 90px #0009;font:14px/1.65 system-ui}
+.repo-run-warning::backdrop{background:#02060bbd;backdrop-filter:blur(6px)}
+.run-warning-icon{display:grid;place-items:center;width:60px;height:60px;font-size:34px;border-radius:18px;color:#e3b341;background:#e3b34118;margin-bottom:18px}
+.repo-run-warning h2{font-size:22px;line-height:1.3;margin:0 0 14px}.repo-run-warning p{color:#b8c6d5}.run-warning-evidence{padding:12px;border-radius:8px;background:#080f19;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace}
+.run-warning-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:24px;flex-wrap:wrap}.run-warning-actions button{padding:10px 16px;border:1px solid #ffffff25;background:#253244;color:#e6edf3;border-radius:9px;font:600 13px system-ui;cursor:pointer}.run-warning-actions .run-warning-confirm{background:#e3b341;color:#251b03;border-color:#e3b341}.run-warning-actions [hidden]{display:none}
+.repo-run-warning[data-level="red"]{border-color:#f8514966}.repo-run-warning[data-level="red"] .run-warning-icon{color:#f85149;background:#f8514918}.repo-run-warning button:focus-visible{outline:2px solid #aee4f4;outline-offset:3px}
+.github-repository .rv-gh-body[hidden],.github-repository .rv-tab-panel[hidden],.github-repository>.rv-toolbar[hidden]{display:none!important}
+.github-repository .rv-tab-panel{flex:1;min-height:0;overflow:auto;padding:16px 32px 40px}
+.github-repository .rv-tab-panel h2{font-size:22px;margin:0 0 20px}
+.github-repository .rv-info-row{border:1px solid #30363d;padding:16px;border-radius:6px;margin-bottom:10px}
+.github-repository .rv-info-row summary{cursor:pointer;font-weight:600;color:#e6edf3;overflow-wrap:anywhere}
+.github-repository .rv-info-meta{color:#9198a1;font-size:12px;margin:8px 0 0}
+.github-repository .rv-info-row pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 system-ui;color:#c9d1d9;margin-top:18px}
+.github-repository .rv-tab-paging{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.github-repository #rv-download[hidden]{display:none}
+.github-repository .rv-toolbar #rv-zip{display:inline-flex;align-items:center;background:#212830;border:1px solid #3d444d;border-radius:6px;color:#f0f6fc;font-size:12px;font-weight:500;padding:6px 12px;text-decoration:none}
+.github-repository .rv-toolbar #rv-zip:hover{background:#2d333b}
+dialog.repo-viewer.github-repository[open]{padding:0;background:#0d1117!important;color:#e6edf3;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;box-shadow:none}
+.github-repository>header{padding:20px 32px;background:#010409;border-bottom:0;gap:14px;flex-shrink:0}
+.github-repository>header h2{color:#4493f8;font-size:20px;font-weight:600;margin:0}
+.github-repository>header h2:after{content:'Public';color:#9198a1;border:1px solid #3d444d;border-radius:20px;padding:1px 8px;font-size:12px;font-weight:400;margin-left:12px;vertical-align:middle}
+.github-repository a{color:#4493f8;text-decoration:none}.github-repository a:hover{text-decoration:underline}
+.github-repository button,.github-repository>header>a{background:#212830;border:1px solid #3d444d;border-radius:6px;color:#f0f6fc;font-size:12px;font-weight:500;padding:6px 12px;box-shadow:none;transition:none}
+.github-repository button:hover:not(:disabled){background:#2d333b;transform:none}.github-repository button:focus-visible{outline:2px solid #4493f8;outline-offset:2px}
+.github-repository .rv-gh-tabs{display:flex;align-items:center;gap:8px;background:#010409;border-bottom:1px solid #3d444d;padding:0 32px;flex-shrink:0;overflow-x:auto}
+.github-repository .rv-gh-tabs a,.github-repository .rv-gh-tabs button{white-space:nowrap;padding:12px 16px;background:none;border:0;border-radius:0;color:#e6edf3;font-size:14px}
+.github-repository .rv-gh-tabs [aria-current]{border-bottom:2px solid #f78166;font-weight:600}
+.github-repository>#rv-status{margin:0;padding:10px 32px;font-size:12px;color:#9198a1;background:#0d1117;flex-shrink:0}
+.github-repository>.rv-toolbar{padding:8px 32px 18px;flex-shrink:0}.github-repository #rv-path{font-size:13px;font-weight:500}.github-repository #rv-run{background:#238636;border-color:#2ea043;font-weight:600}
+.github-repository .rv-gh-body{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;padding:0 32px 40px;overflow:auto;flex:1;min-height:0}
+dialog.github-repository[open] .rv-gh-body>.rv-layout{display:flex!important;flex-direction:column;min-width:0;overflow:visible;gap:24px;margin:0;padding:0}
+dialog.github-repository[open] .rv-layout aside{border:1px solid #3d444d;border-radius:6px;padding:0;background:#0d1117;display:grid;grid-template-columns:1fr 240px;gap:0;flex:none}
+.github-repository .rv-layout aside>label{display:none}.github-repository .rv-breadcrumb{margin:0!important;align-self:center;justify-self:start;background:none;border:0;padding:12px 16px;color:#e6edf3;opacity:1}
+dialog.github-repository #rv-filter{margin:8px;width:calc(100% - 16px);background:#010409;border-color:#3d444d;border-radius:6px;color:#e6edf3}
+dialog.github-repository[open] #rv-files{grid-column:1/-1;margin:0;max-height:420px!important;border-top:1px solid #3d444d}
+dialog.github-repository .rv-file{border:0;border-bottom:1px solid #212830;border-radius:0;background:none;padding:9px 16px;color:#e6edf3;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+dialog.github-repository .rv-file:last-child{border-bottom:0}dialog.github-repository .rv-file:hover{background:#161b22!important;color:#4493f8}
+.github-repository .rv-readme{background:#0d1117;border:1px solid #3d444d;border-radius:6px;padding:24px 32px;font-size:16px;color:#e6edf3;line-height:1.6}
+.github-repository .rv-readme>h2:first-child{font-size:14px;margin:-24px -32px 24px;padding:14px 20px;border-bottom:1px solid #3d444d}
+.github-repository .rv-readme h1{font-size:32px;letter-spacing:normal;text-shadow:none;line-height:1.3;border-bottom:1px solid #212830;padding-bottom:8px}.github-repository .rv-readme h2{font-size:24px;border-bottom:1px solid #212830;padding-bottom:8px}.github-repository .rv-readme h3{font-size:20px}.github-repository .rv-readme pre{background:#151b23}.github-repository #rv-code{background:#0d1117;border-color:#3d444d;border-radius:6px}
+.github-repository .rv-gh-about h3{font-size:16px;margin:0 0 16px}.github-repository .rv-gh-about p{margin:0 0 16px;overflow-wrap:anywhere}.github-repository .rv-gh-stat{color:#9198a1;font-size:14px}.github-repository .rv-gh-topics{display:flex;flex-wrap:wrap;gap:6px}.github-repository .rv-gh-topics span{font-size:12px;background:#121d2f;color:#4493f8;border-radius:20px;padding:3px 10px}
+@media(max-width:850px){.github-repository .rv-gh-body{grid-template-columns:minmax(0,1fr);padding:0 16px 24px}.github-repository .rv-gh-about{grid-row:1;border-bottom:1px solid #3d444d;padding-bottom:16px}.github-repository>header,.github-repository>.rv-toolbar{padding:12px 16px}.github-repository .rv-gh-tabs{padding:0 8px}.github-repository>#rv-status{padding-inline:16px}.github-repository .rv-readme{padding:20px}.github-repository .rv-readme>h2:first-child{margin:-20px -20px 20px}.github-repository>header h2{font-size:16px}dialog.github-repository[open] .rv-layout aside{grid-template-columns:1fr 180px}}

@@ -1,0 +1,27 @@
+.repo-viewer{width:calc(100vw - 32px);max-width:1500px;height:calc(100dvh - 40px);max-height:none;padding:22px;border:1px solid #ffffff30;border-radius:20px;background:#101824;color:#eef4fa}.repo-viewer::backdrop{background:#000c;backdrop-filter:blur(8px)}.repo-viewer header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}.repo-viewer h2{flex:1;overflow-wrap:anywhere;font-size:20px}.repo-viewer a{color:#b2e5ff}.rv-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:20px}.rv-layout aside{border-right:1px solid #ffffff20;padding-right:16px}.rv-layout input{width:100%}#rv-files{max-height:65vh;overflow:auto;margin-top:12px}.repo-viewer .rv-file{display:block;width:100%;text-align:left;padding:9px;background:transparent;color:#c9dbea;border:0;border-radius:6px;font:12px ui-monospace,monospace;overflow-wrap:anywhere}.rv-file:hover{background:#ffffff12!important}.rv-content{min-width:0}.rv-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.rv-toolbar strong{flex:1;overflow-wrap:anywhere}.rv-toolbar button{font-size:12px;padding:10px}#rv-code{background:#070d14;border:1px solid #ffffff18;border-radius:12px;padding:20px;overflow:auto;max-height:55vh;min-height:180px;font:13px/1.6 ui-monospace,monospace;tab-size:4}#rv-stage{height:65vh;background:white;border-radius:12px;overflow:hidden}#rv-stage iframe{width:100%;height:100%;border:0}#rv-stage:fullscreen{height:100vh;border-radius:0}#rv-status{color:#a9c5d4;font-size:13px;line-height:1.6}#rv-preview[hidden]{display:none}@media(max-width:700px){.repo-viewer{width:calc(100vw - 12px);padding:14px}.rv-layout{grid-template-columns:1fr}.rv-layout aside{border:0;padding:0}#rv-files{max-height:180px}.repo-viewer h2{font-size:16px}#rv-code{max-height:40vh}}
+/* The open file browser is a full-page surface, not a capped-width dialog. */
+dialog.repo-viewer[open]>.rv-layout{display:flex!important;flex-direction:column;overflow:auto;gap:20px;margin-top:18px;padding-bottom:28px}
+dialog.repo-viewer[open] .rv-layout aside{flex:none;min-height:auto;border:1px solid #ffffff20;border-radius:10px;padding:16px}
+dialog.repo-viewer[open] #rv-files{flex:none;max-height:380px!important;overflow:auto}
+dialog.repo-viewer[open] .rv-content{flex:none}
+dialog.repo-viewer[open] .rv-content[hidden]{display:none}
+dialog.repo-viewer[open] #rv-code{flex:none;max-height:65vh!important;min-height:120px}
+.rv-breadcrumb{text-align:left;margin-bottom:12px;align-self:flex-start}
+.rv-readme{padding:24px 32px;border:1px solid #ffffff20;border-radius:10px;background:#0d1622;line-height:1.7;overflow-wrap:anywhere;flex:none;min-width:0}
+.rv-readme>h2:first-child{margin-top:0;font-size:15px;border-bottom:1px solid #ffffff20;padding-bottom:14px}
+.rv-readme img{max-width:100%;height:auto}.rv-readme pre{padding:16px;background:#060d16;border-radius:8px;overflow:auto;white-space:pre}.rv-readme code{font-family:ui-monospace,monospace;font-size:13px}.rv-readme table{display:block;overflow:auto;border-collapse:collapse}.rv-readme th,.rv-readme td{padding:8px 12px;border:1px solid #ffffff20}.rv-readme blockquote{margin-left:0;padding-left:18px;border-left:3px solid #43596d;color:#b0c6d7}
+dialog.repo-viewer #rv-filter{flex:0 0 auto;height:34px;padding:6px 10px;font-size:12px;border-radius:7px}
+dialog.repo-viewer .rv-owner-avatar{width:36px;height:36px;object-fit:cover;border-radius:50%;flex:none}
+dialog.repo-viewer,dialog.repo-viewer *{scrollbar-width:thin;scrollbar-color:#43596d #101824}
+dialog.repo-viewer ::-webkit-scrollbar{width:9px;height:9px}
+dialog.repo-viewer ::-webkit-scrollbar-track{background:#101824}
+dialog.repo-viewer ::-webkit-scrollbar-thumb{background:#43596d;border:2px solid #101824;border-radius:8px}
+dialog.repo-viewer ::-webkit-scrollbar-thumb:hover{background:#6a879e}
+dialog.repo-viewer ::-webkit-scrollbar-corner{background:#101824}
+dialog.repo-viewer[open]{position:fixed;inset:0;box-sizing:border-box;width:100%;max-width:none;height:100dvh;max-height:none;margin:0;border:0;border-radius:0;display:flex;flex-direction:column;overflow:hidden}
+dialog.repo-viewer[open]>.rv-layout{flex:1;min-height:0;width:100%;grid-template-columns:280px minmax(0,1fr)}
+dialog.repo-viewer[open] .rv-layout aside{display:flex;flex-direction:column;min-height:0}
+dialog.repo-viewer[open] #rv-files{flex:1;min-height:0;max-height:none;overflow:auto}
+dialog.repo-viewer[open] .rv-content{display:flex;flex-direction:column;min-height:0}
+dialog.repo-viewer[open] #rv-code{flex:1;min-height:0;max-height:none;margin-bottom:0;overflow:auto}
+@media(max-width:700px){dialog.repo-viewer[open]>.rv-layout{grid-template-columns:1fr;grid-template-rows:minmax(100px,25vh) minmax(0,1fr)}dialog.repo-viewer[open] #rv-files{max-height:none}}
