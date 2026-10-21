@@ -9,6 +9,8 @@ function highlightPage(page) {
 }
 highlightPage('Home');
 const catalogFrame = document.querySelector('#catalog-frame');
+const localSite=['127.0.0.1','localhost'].includes(location.hostname);
+const cloudCatalogUrl=new URL('cloud-catalog/index-261014.html',location.href).href;
 const moviesFrame = document.createElement('iframe');
 moviesFrame.id = 'movies-frame';
 moviesFrame.title = 'Kermit Web movies';
@@ -40,7 +42,6 @@ function showSectionLoader(frame,title){
 sectionLoader.querySelector('button').onclick=()=>{sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);};
 [catalogFrame,moviesFrame,cloudFrame,reposFrame].forEach(frame=>frame.addEventListener('load',()=>{
   if(!frame.getAttribute('src'))return;
-  if(frame===cloudFrame)return; // Cloud catalog reports readiness after its images settle.
   frame.dataset.loaded='true';
   if(loadingFrame===frame){sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);}
 }));
@@ -51,7 +52,7 @@ window.addEventListener('message',event=>{
     if (loadingFrame === catalogFrame) { sectionLoader.hidden = true; clearTimeout(sectionLoadTimeout); }
     return;
   }
-  if(event.origin!=='http://127.0.0.1:8010'||event.source!==cloudFrame.contentWindow||!cloudFrame.getAttribute('src'))return;
+  if(event.origin!==new URL(cloudCatalogUrl).origin||event.source!==cloudFrame.contentWindow||!cloudFrame.getAttribute('src'))return;
   if(event.data?.type!=='kermit-cloud-images-ready')return;
   cloudFrame.dataset.loaded='true';
   if(loadingFrame===cloudFrame){sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);}
@@ -71,7 +72,7 @@ function openCatalog(destination = 'games.html') {
   if(needsNavigation)delete frame.dataset.loaded;
   showSectionLoader(frame,isRepos?'Repositories':isCloud?'Cloud Gaming':isMovies?'Movies & Shows':'Games');
   // Keep each page alive; only an explicit game launch may change its URL.
-  if (needsNavigation) frame.src = isCloud ? 'http://127.0.0.1:8010/index-261014.html?v=images-ready-2' : url.href;
+  if (needsNavigation) frame.src = isCloud ? cloudCatalogUrl : url.href;
   [catalogFrame,moviesFrame,cloudFrame,reposFrame].forEach(item=>{item.style.display=item===frame?'block':'none';});
   catalogShell.hidden = false;
   document.body.classList.add('catalog-open');

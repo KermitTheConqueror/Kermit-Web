@@ -12,6 +12,7 @@ function openCloud(game){
  frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-pointer-lock allow-presentation');
  frame.setAttribute('allow','fullscreen; autoplay; gamepad');frame.allowFullscreen=true;frame.referrerPolicy='no-referrer';
  host.replaceChildren(frame);
+ const help=document.querySelector('.player-help');help.hidden=false;help.replaceChildren(document.createTextNode('If CloudMoon cannot load inside the site, '));const direct=document.createElement('a');direct.href=url;direct.target='_blank';direct.rel='noopener noreferrer';direct.textContent='open it directly';help.append(direct,document.createTextNode('. CloudMoon may require its own login or subscription.'));
  document.querySelector('#cloud-title').textContent=game?game.name:'CloudMoon catalog';
  document.querySelector('#cloud-player').showModal();
 }

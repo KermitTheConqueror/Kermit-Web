@@ -5,6 +5,12 @@
  let browserConfig;
  async function fetch(url,options){
   const address=new URL(url,location.href), type=mediaType;
+  if(!['localhost','127.0.0.1'].includes(location.hostname)){
+   address.searchParams.set('type',type);
+   const response=await window.fetch(address,{...options,signal:AbortSignal.timeout(15000)});
+   if(!response.ok){let data={};try{data=await response.json();}catch{}throw Error(data.error||'Movie API unavailable ('+response.status+').');}
+   return response;
+  }
   const tv=address.pathname.match(/^\/api\/tv\/([1-9]\d*)(?:\/season\/(\d+))?$/);
   if(address.pathname!=='/api/movies'&&!tv)throw Error('Unsupported movie request');
   if(!browserConfig)browserConfig=window.fetch('tmdb-browser.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Movie configuration is missing.');return r.json();}).catch(e=>{browserConfig=null;throw e;});
