@@ -94,7 +94,7 @@
   $('run').textContent='▶ Run Project ↗';
   let repo,files=[],selected=null,source='',generation=0,fileGeneration=0,runGeneration=0;
   const textCache=new Map();
-  const entryFile=()=>selected && /\.html?$/i.test(selected.path) ? selected : files.find(f=>f.path==='index.html') || files.find(f=>/(^|\/)index\.html?$/i.test(f.path)) || files.find(f=>/\.html?$/i.test(f.path));
+  const entryFile=()=>selected && /\.html?$/i.test(selected.path) ? selected : ['dist/index.html','build/index.html','out/index.html','index.html','docs/index.html','public/index.html'].map(path=>files.find(f=>f.path===path)).find(Boolean) || files.find(f=>/(^|\/)index\.html?$/i.test(f.path)) || files.find(f=>/\.html?$/i.test(f.path));
   function setupIndicators(){
     // Conservative hints, not a guarantee: manifests can also belong to static sites.
     return files.filter(f=>/(^|\/)(package\.json|requirements\.txt|pyproject\.toml|Pipfile|manage\.py|composer\.json|Gemfile|go\.mod|Cargo\.toml|Dockerfile|Procfile|server\.[cm]?js|app\.py|next\.config\.[^/]+|vite\.config\.[^/]+|webpack\.config\.[^/]+)$|\.(php|csproj)$/i.test(f.path)).map(f=>f.path);
@@ -188,45 +188,21 @@
     launchProject(entry);
   };
   function launchProject(entry){
-    if(!entry){$('status').textContent='No HTML entry point. This project must be built into a static website first. Server and native code cannot run in a browser.';return;}
+    if(!entry){$('status').textContent='Choose an HTML entry page. Backend projects need a built website first.';return;}
+    const url=new URL('https://kermit-web-github-preview.vercel.app/__preview/start');
+    url.searchParams.set('repo',repo.full_name);
+    url.searchParams.set('entry',entry.path);
+    // Published build folders must act as the root for /assets and page links.
+    const publishedRoot=entry.path.match(/^(dist|build|out|docs|public)\//)?.[1];
+    if(publishedRoot)url.searchParams.set('root',publishedRoot);
+    url.searchParams.set('ref',repo.default_branch);
+    // Use a top-level preview origin so its host-only session cookie works.
+    // Never serve untrusted repository code on Kermit's own origin.
     const tab=window.open('about:blank','_blank');
-    if(!tab){$('status').textContent='Your browser blocked the preview tab. Allow pop-ups and try again.';return;}
+    if(!tab){$('status').textContent='Allow pop-ups, then click Run Project again.';return;}
     tab.opener=null;
-    const shell=tab.document;
-    const theme=shell.createElement('style');
-    theme.textContent=`
-      *{box-sizing:border-box}body{background:radial-gradient(ellipse at top left,#183b40,#0a111c 65%)!important;color:#eaf7f5!important;font:14px system-ui,sans-serif!important;height:100dvh!important}
-      header{padding:16px 24px!important;gap:12px!important;background:#0c1729cc;border-bottom:1px solid #ffffff15;flex-wrap:wrap}
-      header strong{font-size:15px;letter-spacing:.2px;overflow-wrap:anywhere;min-width:120px}
-      header strong:before{content:'K';display:inline-grid;place-items:center;width:34px;height:34px;margin-right:12px;border-radius:11px;background:#a7efcd;color:#102c29;font-size:23px;font-weight:900;vertical-align:middle}
-      button{padding:10px 18px;border:1px solid #ffffff24;border-radius:12px;background:#ffffff0c;color:#eaf7f5;font:600 13px system-ui;cursor:pointer;transition:background .15s}
-      button:hover{background:#ffffff20}button:focus-visible{outline:3px solid #a7efcd;outline-offset:3px}button:last-child{color:#ffc3cb;border-color:#ff99aa40;background:#ea6a7b12}
-      body>p{margin:0!important;padding:10px 24px;color:#a5b8c8;font-size:12px;line-height:1.6;border-bottom:1px solid #ffffff0a}
-      main{margin:18px;border:1px solid #ffffff20;border-radius:16px;overflow:hidden;box-shadow:0 20px 65px #0006}
-      main:fullscreen{margin:0;border:0;border-radius:0}iframe{display:block}
-      @media(max-width:600px){header{padding:12px!important}header strong{width:100%;flex-basis:100%!important}body>p{padding:8px 12px}main{margin:8px;border-radius:10px}}
-      @media(prefers-reduced-motion:reduce){button{transition:none}}
-    `;
-    shell.body.append(theme);
-    shell.title=repo.full_name+' — Static website';
-    shell.body.style.cssText='margin:0;background:#0d1117;color:#e6edf3;font:14px system-ui;display:flex;flex-direction:column;height:100vh';
-    const toolbar=shell.createElement('header');toolbar.style.cssText='padding:12px;display:flex;gap:16px;align-items:center';
-    const heading=shell.createElement('strong');heading.textContent=repo.full_name;heading.style.flex='1';
-    const stop=shell.createElement('button');stop.textContent='Stop';
-    const full=shell.createElement('button');full.textContent='Fullscreen';
-    toolbar.append(heading,full,stop);
-    const note=shell.createElement('p');note.style.margin='8px 12px';note.textContent='Static website preview · Files load together from an isolated local server. Build steps and backends are not executed. The local preview service must be running.';
-    const stage=shell.createElement('main');stage.style.cssText='flex:1;min-height:0;display:flex;background:white';
-    const [owner,name]=repo.full_name.split('/');
-    const params=new URLSearchParams({owner,repo:name,ref:repo.default_branch,entry:entry.path});
-    const frame=shell.createElement('iframe');frame.title='Repository website';
-    frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-downloads');
-    frame.setAttribute('referrerpolicy','no-referrer');frame.allow='fullscreen; gamepad';frame.allowFullscreen=true;
-    frame.src='http://127.0.0.1:8015/launch?'+params;
-    frame.style.cssText='width:100%;height:100%;border:0;flex:1';stage.append(frame);
-    stop.onclick=()=>{stage.replaceChildren();stage.style.background='transparent';const stopped=shell.createElement('p');stopped.textContent='Project stopped. You can close this tab or launch another project from the library.';stopped.style.cssText='margin:auto;padding:32px;text-align:center;color:#a5b8c8;max-width:480px;line-height:1.8';stage.append(stopped);note.textContent='Session ended';stop.disabled=true;};
-    full.onclick=()=>stage.requestFullscreen?.().catch(()=>{note.textContent='Fullscreen unavailable.';});
-    shell.body.append(toolbar,note,stage);
-    $('status').textContent='Opened repository files as a static website in an about:blank tab.';
+    tab.location.replace(url.href);
+    $('status').textContent='Opened isolated preview. If it says “Repository not enabled”, add '+repo.full_name+' to PREVIEW_REPOSITORIES in the preview Vercel project and redeploy. Close older preview tabs before switching projects.';
   };
 })();
+
