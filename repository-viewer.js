@@ -174,7 +174,10 @@
   function cancelPreview(){pendingPreview=null;$('status').textContent='Preview cancelled. No project was started.';}
   cancelRun.onclick=()=>{cancelPreview();warningDialog.close();};warningDialog.addEventListener('cancel',cancelPreview);
   confirmRun.onclick=()=>{const pending=pendingPreview;pendingPreview=null;warningDialog.close();if(pending&&pending.generation===generation)launchProject(pending.entry);};
+  // Explicitly maintained builds only; never trust arbitrary repository homepages.
+  const hostedBuild=()=>['shsgames/shsgames.github.io','kermittheconqueror/kermit-shsgames'].includes(repo?.full_name?.toLowerCase())?'https://kermit-shsgames.vercel.app/':null;
   $('run').onclick=()=>{
+    if(hostedBuild()){launchProject(null);return;}
     const entry=entryFile();
     const indicators=setupIndicators();
     if(indicators.length||!entry){
@@ -188,6 +191,15 @@
     launchProject(entry);
   };
   function launchProject(entry){
+    const builtUrl=hostedBuild();
+    if(builtUrl){
+      const tab=window.open('about:blank','_blank');
+      if(!tab){$('status').textContent='Allow pop-ups, then click Run Project again.';return;}
+      tab.opener=null;
+      tab.location.replace(builtUrl);
+      $('status').textContent='Opened the separately hosted SHS Games build (source b6b580e). Upstream changes require a new build.';
+      return;
+    }
     if(!entry){$('status').textContent='Choose an HTML entry page. Backend projects need a built website first.';return;}
     const url=new URL('https://kermit-web-github-preview.vercel.app/__preview/start');
     url.searchParams.set('repo',repo.full_name);
