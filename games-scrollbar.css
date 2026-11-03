@@ -1,0 +1,53 @@
+/* All game canvases reach both sides and the bottom; top controls stay accessible. */
+html.games-document .game-player-page {height:100dvh;inset:0;}
+html.games-document .player-content {width:100%;max-width:none;margin:0;padding:0;min-height:0;}
+html.games-document .player-stage-shell {border:0;border-radius:0;box-shadow:none;}
+html.games-document .player-stage {width:100%;height:auto;min-height:0;}
+html.games-document .player-info-bar {display:none;}
+html.games-document .player-topbar {padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right));}
+body.games-page.game-player-open > .dock {display:none!important;}
+/* Native scrolling and keyboard controls, with the current wallpaper's palette. */
+html.games-document,
+body.games-page {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ui-accent, #b7edce) var(--ui-field, #0a1512);
+}
+
+@supports selector(::-webkit-scrollbar) {
+  html.games-document,
+  body.games-page {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+  html.games-document::-webkit-scrollbar,
+  body.games-page::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    height: 10px;
+  }
+  html.games-document::-webkit-scrollbar-track,
+  body.games-page::-webkit-scrollbar-track {
+    background: var(--ui-field, #0a1512);
+  }
+  html.games-document::-webkit-scrollbar-thumb,
+  body.games-page::-webkit-scrollbar-thumb {
+    min-height: 48px;
+    border: 2px solid var(--ui-field, #0a1512);
+    border-radius: 20px;
+    background: var(--ui-accent, #b7edce);
+  }
+  html.games-document::-webkit-scrollbar-thumb:hover,
+  body.games-page::-webkit-scrollbar-thumb:hover {
+    background: var(--ui-text, #eef6f1);
+  }
+  html.games-document::-webkit-scrollbar-corner,
+  body.games-page::-webkit-scrollbar-corner {
+    background: var(--ui-field, #0a1512);
+  }
+}
+
+@media (forced-colors: active) {
+  html.games-document, body.games-page { scrollbar-color: auto; scrollbar-width: auto; }
+  html.games-document::-webkit-scrollbar-thumb, body.games-page::-webkit-scrollbar-thumb { background: ButtonText; border-color: Canvas; }
+  html.games-document::-webkit-scrollbar-track, body.games-page::-webkit-scrollbar-track { background: Canvas; }
+}

@@ -23,6 +23,16 @@ cloudFrame.allowFullscreen=true;
 const catalogHome = document.querySelector('#catalog-home');
 const reposFrame=document.createElement('iframe');
 reposFrame.id='repositories-frame';reposFrame.title='GitHub repository search';reposFrame.style.display='none';catalogShell.append(reposFrame);
+const musicFrame=document.createElement('iframe');
+window.kermitMusicPlaying=false;
+window.addEventListener('message',event=>{
+ if(event.origin!==location.origin||event.source!==musicFrame.contentWindow||event.data?.type!=='kermit-music-audio')return;
+ window.kermitMusicPlaying=event.data.playing===true;
+ window.dispatchEvent(new Event('kermit-music-audio-change'));
+});
+const shortsFrame=document.createElement('iframe');
+shortsFrame.id='shorts-frame';shortsFrame.title='Kermit Web Shorts';shortsFrame.style.display='none';shortsFrame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';catalogShell.append(shortsFrame);
+musicFrame.id='music-frame';musicFrame.title='Kermit Web music';musicFrame.style.display='none';musicFrame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';catalogShell.append(musicFrame);
 const sectionLoader = document.createElement('div');
 sectionLoader.className='section-loader';sectionLoader.hidden=true;
 sectionLoader.innerHTML='<div class="section-loader-content"><span class="section-loader-mark">K</span><h2></h2><p role="status">Opening page…</p><div class="section-loader-track"><span></span></div><button type="button" hidden>Show page</button></div>';
@@ -40,7 +50,7 @@ function showSectionLoader(frame,title){
   },15000);
 }
 sectionLoader.querySelector('button').onclick=()=>{sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);};
-[catalogFrame,moviesFrame,cloudFrame,reposFrame].forEach(frame=>frame.addEventListener('load',()=>{
+[catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame].forEach(frame=>frame.addEventListener('load',()=>{
   if(!frame.getAttribute('src'))return;
   frame.dataset.loaded='true';
   if(loadingFrame===frame){sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);}
@@ -59,28 +69,33 @@ window.addEventListener('message',event=>{
 });
 
 function openCatalog(destination = 'games.html') {
+  document.body.classList.remove('mobile-game-open');
   const url = new URL(destination, location.href);
   url.searchParams.set('v', url.pathname.endsWith('/movies.html') ? '20261017-direct-tmdb-2' : url.pathname.endsWith('/cloud.html') ? '20261017-cloud-refresh' : '20261018-fresh-covers');
   const isMovies = url.pathname.endsWith('/movies.html');
   const isCloud = url.pathname.endsWith('/cloud.html');
   const isRepos = url.pathname.endsWith('/repositories.html');
-  const frame = isRepos ? reposFrame : isCloud ? cloudFrame : isMovies ? moviesFrame : catalogFrame;
-  highlightPage(isRepos ? 'Repositories' : isCloud ? 'Cloud Gaming' : isMovies ? 'Movies' : 'Games');
+  const isMusic = url.pathname.endsWith('/music.html');
+  const isShorts = url.pathname.endsWith('/shorts.html');
+  pageDock.style.display='';
+  const frame = isShorts ? shortsFrame : isMusic ? musicFrame : isRepos ? reposFrame : isCloud ? cloudFrame : isMovies ? moviesFrame : catalogFrame;
+  highlightPage(isShorts ? 'Shorts' : isMusic ? 'Music' : isRepos ? 'Repositories' : isCloud ? 'Cloud Gaming' : isMovies ? 'Movies' : 'Games');
   stopGamesBeforeLeaving(frame);
   const currentSource = frame.getAttribute('src');
   const needsNavigation=!currentSource || (url.searchParams.has('launch') && new URL(currentSource, location.href).href !== url.href);
   if(needsNavigation)delete frame.dataset.loaded;
-  showSectionLoader(frame,isRepos?'Repositories':isCloud?'Cloud Gaming':isMovies?'Movies & Shows':'Games');
+  showSectionLoader(frame,isShorts?'Shorts':isMusic?'Music':isRepos?'Repositories':isCloud?'Cloud Gaming':isMovies?'Movies & Shows':'Games');
   // Keep each page alive; only an explicit game launch may change its URL.
   if (needsNavigation) frame.src = isCloud ? cloudCatalogUrl : url.href;
-  [catalogFrame,moviesFrame,cloudFrame,reposFrame].forEach(item=>{item.style.display=item===frame?'block':'none';});
+  [catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame].forEach(item=>{item.style.display=item===frame?'block':'none';});
   catalogShell.hidden = false;
   document.body.classList.add('catalog-open');
   document.body.style.overflow = 'hidden';
-  history.replaceState({ catalogOpen: true }, '', isRepos?'#repositories':isCloud?'#cloud':isMovies?'#movies':'#games');
+  history.replaceState({ catalogOpen: true }, '', isShorts?'#shorts':isMusic?'#music':isRepos?'#repositories':isCloud?'#cloud':isMovies?'#movies':'#games');
 }
 
 function closeCatalog() {
+  pageDock.style.display='';
   highlightPage('Home');
   stopGamesBeforeLeaving(null);
   sectionLoader.hidden=true;loadingFrame=null;clearTimeout(sectionLoadTimeout);
@@ -93,7 +108,7 @@ function closeCatalog() {
 // Unload the outgoing game page, not just its visual layer. This also stops
 // audio, timers and cloud streaming connections inside nested game frames.
 function stopGamesBeforeLeaving(nextFrame) {
-  for (const frame of [catalogFrame, cloudFrame]) {
+  for (const frame of [catalogFrame, cloudFrame, shortsFrame]) {
     if (frame === nextFrame || !frame.getAttribute('src')) continue;
     if (document.fullscreenElement === frame) document.exitFullscreen().catch(() => {});
     frame.removeAttribute('src');
@@ -101,7 +116,7 @@ function stopGamesBeforeLeaving(nextFrame) {
   }
 }
 
-document.querySelectorAll('a[href^="games.html"]:not(.dock-search), a[href="movies.html"], a[href="cloud.html"], a[href="repositories.html"]').forEach(link => {
+document.querySelectorAll('a[href^="games.html"]:not(.dock-search), a[href="movies.html"], a[href="cloud.html"], a[href="repositories.html"], a[href="music.html"], a[href="shorts.html"]').forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault();
     openCatalog(link.getAttribute('href'));
@@ -130,7 +145,9 @@ if (location.hash === '#games') openCatalog('games.html');
 if (location.hash === '#movies') openCatalog('movies.html');
 if (location.hash === '#cloud') openCatalog('cloud.html');
 if (location.hash === '#repositories') openCatalog('repositories.html');
-[catalogFrame, moviesFrame].forEach(frame => frame.addEventListener('load', () => {
+if (location.hash === '#music') openCatalog('music.html');
+if (location.hash === '#shorts') openCatalog('shorts.html');
+[catalogFrame, moviesFrame, musicFrame].forEach(frame => frame.addEventListener('load', () => {
   const doc = frame.contentDocument;
   if (!doc) return;
   doc.querySelectorAll('.dock, .page-dock').forEach(dock => { dock.style.display = 'none'; });
@@ -167,7 +184,7 @@ function showSiteSearchResults() {
   const query = siteSearchInput.value.trim().toLowerCase();
   siteSearchResults.replaceChildren();
   if (!query) { siteSearchResults.style.display = 'none'; return; }
-  const matches = searchableGames.filter(game => game.title.toLowerCase().includes(query)).slice(0, 10);
+  const matches = searchableGames.filter(game => game.title.toLowerCase().includes(query)&&(window.kermitMobileAllowed?.(game.title)??true)).slice(0, 10);
   matches.forEach(game => {
     const button = document.createElement('button');
     button.className = 'site-search-result';
@@ -325,3 +342,21 @@ function draw(now = performance.now()) {
 addEventListener('resize', resize);
 resize();
 draw();
+// Cursor-driven perspective tilt for the home Discord card.
+(() => {
+ const card=document.querySelector('.home-discord');if(!card)return;
+ const motion=matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+ let frame=0,x=0,y=0;
+ const reset=()=>{cancelAnimationFrame(frame);frame=0;card.style.removeProperty('--discord-tilt-x');card.style.removeProperty('--discord-tilt-y');};
+ card.addEventListener('pointermove',event=>{
+  if(!motion.matches||event.pointerType==='touch')return;
+  // Use layout coordinates, unaffected by the card's current 3D transform.
+  x=Math.max(-1,Math.min(1,(event.clientX-card.offsetLeft)/card.offsetWidth*2-1));
+  y=Math.max(-1,Math.min(1,(event.clientY-card.offsetTop)/card.offsetHeight*2-1));
+  if(!frame)frame=requestAnimationFrame(()=>{
+   card.style.setProperty('--discord-tilt-x',(-y*12)+'deg');
+   card.style.setProperty('--discord-tilt-y',(x*12)+'deg');frame=0;
+  });
+ });
+ card.addEventListener('pointerleave',reset);card.addEventListener('pointercancel',reset);motion.addEventListener('change',reset);
+})();

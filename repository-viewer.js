@@ -92,6 +92,8 @@
   const ownerAvatar=document.createElement('img');ownerAvatar.className='rv-owner-avatar';ownerAvatar.hidden=true;ownerAvatar.referrerPolicy='no-referrer';ownerAvatar.onerror=()=>{ownerAvatar.hidden=true;};
   $('name').before(ownerAvatar);
   $('run').textContent='▶ Run Project ↗';
+  body.before($('preview'));
+  let disposePreview=null;
   let repo,files=[],selected=null,source='',generation=0,fileGeneration=0,runGeneration=0;
   const textCache=new Map();
   const entryFile=()=>selected && /\.html?$/i.test(selected.path) ? selected : ['dist/index.html','build/index.html','out/index.html','index.html','docs/index.html','public/index.html'].map(path=>files.find(f=>f.path===path)).find(Boolean) || files.find(f=>/(^|\/)index\.html?$/i.test(f.path)) || files.find(f=>/\.html?$/i.test(f.path));
@@ -103,10 +105,10 @@
   const raw=path=>'https://raw.githubusercontent.com/'+enc(repo.full_name)+'/'+encodeURIComponent(repo.default_branch)+'/'+enc(path);
   async function request(url){const r=await window.githubRequest(url,{credentials:'omit',signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error(r.status===403||r.status===429?'GitHub access or rate limit reached. Please wait and try again.':r.status===404?'Repository or file not found.':'GitHub request failed ('+r.status+').');return r;}
   async function read(url){if(textCache.has(url))return textCache.get(url);const r=await request(url);const blob=await r.blob();if(blob.size>2*1024*1024)throw Error('This file is larger than the 2 MB source-view limit. Download it instead.');const text=await blob.text();if(text.includes('\0'))throw Error('Binary file: download it to view it in a suitable application.');textCache.set(url,text);return text;}
-  function stop(){runGeneration++;$('stage').replaceChildren();$('preview').hidden=true;}
-  function close(){generation++;fileGeneration++;tabRequest++;tabController?.abort();stop();modal.close();}
-  $('close').onclick=close;modal.addEventListener('cancel',()=>{generation++;fileGeneration++;stop();});
-  $('stop').onclick=stop;$('fullscreen').onclick=()=>{$('stage').requestFullscreen?.().catch(()=>{$('status').textContent='Fullscreen is not available in this browser.';});};
+  function stopPreview(){runGeneration++;disposePreview?.();disposePreview=null;$('stage').replaceChildren();$('preview').hidden=true;body.hidden=false;}
+  function close(){generation++;fileGeneration++;tabRequest++;tabController?.abort();stopPreview();modal.close();}
+  $('close').onclick=close;modal.addEventListener('cancel',()=>{generation++;fileGeneration++;stopPreview();});
+  $('stop').onclick=stopPreview;$('fullscreen').onclick=()=>{$('stage').requestFullscreen?.().catch(()=>{$('status').textContent='Fullscreen is not available in this browser.';});};
   function renderFiles(){
     const query=$('filter').value.toLowerCase();$('files').replaceChildren();
     breadcrumb.textContent=folder?'← '+folder:'Repository root';breadcrumb.disabled=!folder;
@@ -123,7 +125,7 @@
   }
   async function selectFile(file){
     modal.querySelector('.rv-content').hidden=false;
-    const id=++fileGeneration;stop();selected=file;source='';$('path').textContent=file.path;$('code').textContent='Loading source…';$('run').disabled=true;$('download').disabled=false;
+    const id=++fileGeneration;stopPreview();selected=file;source='';$('path').textContent=file.path;$('code').textContent='Loading source…';$('run').disabled=true;$('download').disabled=false;
     try{if(file.size>2*1024*1024)throw Error('File exceeds the 2 MB source-view limit. Use Download file.');const text=await read(raw(file.path));if(id!==fileGeneration)return;source=text;$('code').textContent=text;}
     catch(e){if(id===fileGeneration)$('code').textContent=e.message;}
     finally{if(id===fileGeneration)$('run').disabled=false;}
@@ -136,7 +138,7 @@
   };
   window.openRepository=async item=>{
     showRepoTab('code',codeTab);
-    const id=++generation;fileGeneration++;stop();repo=item;files=[];selected=null;source='';textCache.clear();
+    const id=++generation;fileGeneration++;stopPreview();repo=item;files=[];selected=null;source='';textCache.clear();
     folder='';modal.querySelector('.rv-content').hidden=true;readme.textContent='Loading README…';
     ownerAvatar.dataset.githubProfile=repo.owner?.login||'';ownerAvatar.tabIndex=0;ownerAvatar.setAttribute('role','button');ownerAvatar.setAttribute('aria-label','View '+(repo.owner?.login||'owner')+' profile');ownerAvatar.hidden=!repo.owner?.avatar_url;if(repo.owner?.avatar_url){ownerAvatar.src=repo.owner.avatar_url;ownerAvatar.alt=(repo.owner.login||'Owner')+' profile picture';}
     $('name').textContent=repo.full_name;$('filter').value='';$('files').replaceChildren();$('code').textContent='';$('path').textContent='Select a file';$('download').disabled=true;$('run').disabled=true;
@@ -190,31 +192,39 @@
     }
     launchProject(entry);
   };
+  function openBlankProject(url){
+    const tab=window.open('about:blank','_blank');
+    if(!tab){$('status').textContent='Allow pop-ups, then click Run Project again.';return false;}
+    const doc=tab.document;
+    doc.title=repo.full_name+' — Kermit Web';
+    doc.documentElement.style.cssText='width:100%;height:100%;background:#101014;';
+    doc.body.style.cssText='margin:0;width:100%;height:100%;overflow:hidden;';
+    const frame=doc.createElement('iframe');
+    frame.title=repo.full_name;
+    frame.style.cssText='display:block;width:100%;height:100%;border:0;';
+    frame.allow='fullscreen; autoplay; gamepad';
+    frame.allowFullscreen=true;
+    frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock allow-downloads');
+    frame.referrerPolicy='no-referrer';
+    frame.src=url;
+    doc.body.replaceChildren(frame);
+    tab.opener=null;
+    return true;
+  }
   function launchProject(entry){
     const builtUrl=hostedBuild();
     if(builtUrl){
-      const tab=window.open('about:blank','_blank');
-      if(!tab){$('status').textContent='Allow pop-ups, then click Run Project again.';return;}
-      tab.opener=null;
-      tab.location.replace(builtUrl);
+      if(!openBlankProject(builtUrl))return;
       $('status').textContent='Opened the separately hosted SHS Games build (source b6b580e). Upstream changes require a new build.';
       return;
     }
     if(!entry){$('status').textContent='Choose an HTML entry page. Backend projects need a built website first.';return;}
-    const url=new URL('https://kermit-web-github-preview.vercel.app/__preview/start');
-    url.searchParams.set('repo',repo.full_name);
-    url.searchParams.set('entry',entry.path);
-    // Published build folders must act as the root for /assets and page links.
-    const publishedRoot=entry.path.match(/^(dist|build|out|docs|public)\//)?.[1];
-    if(publishedRoot)url.searchParams.set('root',publishedRoot);
-    url.searchParams.set('ref',repo.default_branch);
-    // Use a top-level preview origin so its host-only session cookie works.
-    // Never serve untrusted repository code on Kermit's own origin.
-    const tab=window.open('about:blank','_blank');
-    if(!tab){$('status').textContent='Allow pop-ups, then click Run Project again.';return;}
-    tab.opener=null;
-    tab.location.replace(url.href);
-    $('status').textContent='Opened isolated preview. If it says “Repository not enabled”, add '+repo.full_name+' to PREVIEW_REPOSITORIES in the preview Vercel project and redeploy. Close older preview tabs before switching projects.';
+    // Serve public source files with browser-compatible MIME types. Relative
+    // assets and HTML links stay on the repository's directory on this host.
+    // Do not execute repository scripts in Kermit's own about:blank document.
+    const url=new URL('https://raw.githack.com/'+enc(repo.full_name)+'/'+encodeURIComponent(repo.default_branch)+'/'+enc(entry.path));
+    // Keep repository code isolated in a cross-origin frame, not in the wrapper document.
+    if(!openBlankProject(url.href))return;
+    $('status').textContent='Opened public repository files in about:blank. No preview allowlist is required. Static sites only; build steps, backends, and root-relative paths may need a dedicated deployment.';
   };
 })();
-

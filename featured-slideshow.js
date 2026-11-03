@@ -55,6 +55,6 @@
   host.addEventListener('mouseenter',()=>hover=true);host.addEventListener('mouseleave',()=>hover=false);
   host.addEventListener('focusin',()=>focused=true);host.addEventListener('focusout',e=>focused=host.contains(e.relatedTarget));
   host.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();show(index+1);}if(e.key==='ArrowLeft'){e.preventDefault();show(index-1);}});
-  setInterval(()=>{if(!paused&&!hover&&!focused&&!document.hidden&&!document.querySelector('.game-player-page'))show(index+1);},6000);
+  setInterval(()=>{if(!document.documentElement.classList.contains('mobile-mode')&&!paused&&!hover&&!focused&&!document.hidden&&!document.querySelector('.game-player-page'))show(index+1);},6000);
   show(0);
 })();

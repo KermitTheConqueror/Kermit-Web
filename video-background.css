@@ -17,5 +17,4 @@ body.catalog-open > .hero { visibility: hidden; }
 html.embedded-catalog, html.embedded-catalog body { background: transparent !important; }
 html.embedded-catalog .site-background-video { display: none; }
 html:has(body.games-page) { height:100%; overflow:hidden !important; }
-body.games-page { height:100%; overflow-x:hidden !important; overflow-y:auto !important; scrollbar-width:none; }
-body.games-page::-webkit-scrollbar { display:none; }
+body.games-page { height:100%; overflow-x:hidden !important; overflow-y:auto !important; }

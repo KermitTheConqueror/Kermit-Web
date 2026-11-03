@@ -1,4 +1,5 @@
 *{box-sizing:border-box}
+/* Crisp explorer surfaces, with the wallpaper still visible between panels. */
 .github-limit-banner{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:10000;width:max-content;max-width:calc(100vw - 32px);padding:12px 18px;border:1px solid #e3b34166;border-radius:12px;background:#182230;color:#f3d993;box-shadow:0 8px 30px #0005;font-size:13px;pointer-events:none}
 .github-limit-banner[hidden]{display:none}
 .deploy-dot[hidden]{display:none}

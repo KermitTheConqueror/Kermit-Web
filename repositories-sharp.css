@@ -1,0 +1,36 @@
+/* Sharper geometry and stronger separation without covering the wallpaper. */
+body{color:#f0f6fc}
+h1{font-weight:800;letter-spacing:-1.8px;text-shadow:none}
+h1 span{color:#c3e8ff}
+.intro{color:#d0dbe5}
+.eyebrow,.showcase-label{color:#a9e7d0;letter-spacing:2px}
+.repo-brand{border-radius:6px}
+form,.repo-card,.repo-showcase,.repo-hero>.repo-showcase,.github-profile{
+ border:1px solid #526273;border-radius:8px;backdrop-filter:none;
+ background:#101923f5;box-shadow:0 4px 12px #0003;
+}
+.repo-showcase,.repo-hero>.repo-showcase{margin-inline:0;background:linear-gradient(110deg,#122535fa,#101923fa)}
+form{border-top:2px solid #9acfee}
+input,select,button{border-radius:6px}
+input,select{background:#080f18;border-color:#526273}
+input::placeholder{color:#acbac8}
+button{transition:background .15s,border-color .15s;min-height:44px}
+button:hover:not(:disabled){transform:none}
+.repo-feed-tabs button{border:1px solid #526273;border-radius:6px;background:#101923;color:#d9e5ef}
+.repo-feed-tabs button[aria-pressed="true"]{background:#c2e8ff;color:#101923;border-color:#c2e8ff}
+#repo-results{gap:14px}
+.repo-card{padding:24px;gap:14px;transition:border-color .15s,background .15s}
+.repo-card:hover{transform:none;background:#182633f8;border-color:#a9d9f5}
+.repo-card h2{font-weight:700;letter-spacing:-.25px}
+.repo-card a{color:#a9d9ff}
+.repo-card p,.showcase-description{color:#d1dce6;line-height:1.65}
+.repo-meta,.showcase-controls,.profile-stats{border-top-color:#465462}
+.repo-meta,.showcase-meta,.hint,.showcase-owner{color:#b8cad8}
+.showcase-visual{border-radius:8px;border-color:#526273;background:#0c1520;box-shadow:none}
+.showcase-portrait{border-radius:8px;border-color:#7b91a3}
+.showcase-controls>button{border-radius:6px;min-height:44px}
+.showcase-controls .showcase-dots button{min-height:9px;border-radius:3px}
+.profile-project{border-color:#526273;border-radius:6px}
+.github-profile::backdrop{backdrop-filter:none}
+:focus-visible{outline:2px solid #b7e5ff;outline-offset:3px}
+@media(max-width:650px){.repo-card{padding:18px}.repo-showcase{padding:22px 18px}h1{letter-spacing:-1px}}

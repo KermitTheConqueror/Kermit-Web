@@ -1,0 +1,61 @@
+/* Shared Kermit shell. Loaded only by the site's pages, never by games. */
+:root{
+ --ui-accent:#b7edce;--ui-text:#eef6f1;--ui-muted:#b6c7bd;
+ --ui-panel:#111e1bf2;--ui-field:#0a1512;--ui-border:#43584e;
+ --ui-ink:#10251a;--ui-soft:#172a22;--ui-hover:#1b3027;--ui-active:#b7edce24;
+ --ui-radius:10px;--ui-gap:16px;
+}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important;color:var(--ui-text)!important}
+button,input,select,textarea{font-family:inherit!important}
+h1,h2,h3{font-family:inherit!important}
+h1{font-weight:800!important;text-shadow:none!important}
+.eyebrow,.showcase-label,.heading>div>p{color:var(--ui-accent)!important;font-size:11px!important;letter-spacing:2px!important;font-weight:750!important}
+.intro,.hint,.notice,.disclaimer,.discovery-note,.repo-meta,.showcase-description,.showcase-meta{color:var(--ui-muted)!important}
+input:not([type=checkbox]):not([type=range]):not([type=radio]),select,textarea{
+ border:1px solid var(--ui-border)!important;border-radius:8px!important;
+ background:var(--ui-field)!important;color:var(--ui-text)!important;
+ font-size:16px!important;min-height:44px;
+}
+input::placeholder,textarea::placeholder{color:var(--ui-muted)!important;opacity:1}
+button:not(.game-launcher):not(.featured-slide):not(.cloud-game):not(.track):not(.recommendation-card):not(.recent-card):not(.background-option){border-radius:8px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+ outline:2px solid var(--ui-accent)!important;outline-offset:3px!important;
+}
+#repo-form,#search,.player-panel,.recent-section,.repo-card,.repo-showcase,.repo-hero>.repo-showcase,.github-profile,.background-settings{
+ background:var(--ui-panel)!important;border:1px solid var(--ui-border)!important;
+ border-radius:var(--ui-radius)!important;box-shadow:0 5px 18px #0003!important;backdrop-filter:none!important;
+}
+#search-form>button,.search-row>button,#hero-details,#more,.showcase-open,.featured-play{
+ background:var(--ui-accent)!important;color:var(--ui-ink)!important;border:1px solid var(--ui-accent)!important;
+ border-radius:8px!important;font-weight:750!important;min-height:44px;
+}
+/* The whole slide is clickable, so its visual play label can stay compact. */
+.featured-copy .featured-play{min-height:0;padding:7px 14px;line-height:1.25;font-size:12px;letter-spacing:.2px;border-radius:6px!important}
+/* Movie search needs panel padding and a shrinkable input beside its button. */
+form#search{box-sizing:border-box;width:100%;max-width:740px;padding:18px;margin:0 auto 24px}
+form#search>label{margin:0 0 10px;color:var(--ui-muted);font-size:13px;font-weight:650}
+form#search .search-row{display:flex;align-items:stretch;gap:10px;min-width:0}
+form#search #query{box-sizing:border-box;flex:1 1 0;width:0;min-width:0;height:48px;padding:12px 14px;line-height:22px}
+form#search .search-row>button{flex:0 0 auto;height:48px;padding:0 20px;white-space:nowrap;line-height:1}
+@media(max-width:480px){form#search{padding:14px}form#search .search-row{gap:8px}form#search .search-row>button{padding:0 14px}}
+.tabs button,.music-filters button,.genre-picks button,.repo-feed-tabs button,.quiet,.showcase-controls>button{
+ background:var(--ui-soft)!important;color:var(--ui-text)!important;border:1px solid var(--ui-border)!important;border-radius:8px!important;min-height:40px;
+}
+.tabs button[aria-pressed=true],.music-filters button[aria-pressed=true],.genre-picks button[aria-pressed=true],.repo-feed-tabs button[aria-pressed=true]{background:var(--ui-accent)!important;color:var(--ui-ink)!important;border-color:var(--ui-accent)!important}
+.showcase-controls .showcase-dots button{min-height:9px}
+.repo-card:hover,.recent-card:hover,.recommendation-card:hover{border-color:var(--ui-accent)!important;transform:none!important;background:var(--ui-hover)!important}
+.repo-card a,.profile-project-link{color:var(--ui-accent)!important}
+.repo-card p,.track small,.recent-card small,.recommendation-card small{color:var(--ui-muted)!important}
+.recent-card,.recommendation-card,.cloud-game,#all-games-container .game-launcher{border-radius:var(--ui-radius)!important;border-color:var(--ui-border)!important}
+.recent-card,.recommendation-card{background:var(--ui-panel)!important}
+.featured-slide,.movie-hero,#feed{border-radius:12px!important;border-color:var(--ui-border)!important}
+#feed{box-shadow:0 0 0 3px #b7edce0c,0 12px 32px #0005!important}
+.arrows button{background:var(--ui-panel)!important;color:var(--ui-accent)!important;border-color:var(--ui-border)!important}
+.dock,.page-dock{background:var(--ui-panel)!important;border-color:var(--ui-border)!important;box-shadow:0 8px 24px #0005!important}
+.dock a[aria-current=page],.dock .is-active{background:var(--ui-active)!important;color:var(--ui-accent)!important}
+.background-options .background-option{border-radius:10px!important;background:var(--ui-soft)!important;border-color:var(--ui-border)!important}
+.background-options .background-option[aria-pressed=true]{border-color:var(--ui-accent)!important}
+.showcase-visual,.profile-project{border-radius:8px!important;border-color:var(--ui-border)!important;background:var(--ui-field)!important}
+@media(min-width:701px){body>main:not(:has(.viewer)),.music-shell main{padding-left:28px!important;padding-right:28px!important}}
+@media(max-width:700px){body>main:not(:has(.viewer)),.music-shell main{padding-left:16px!important;padding-right:16px!important}.repo-card,.recent-section{padding:18px!important}}
+@media(prefers-reduced-motion:reduce){.repo-card,.recent-card,.recommendation-card{transition:none!important}}

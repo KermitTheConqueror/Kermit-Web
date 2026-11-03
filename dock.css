@@ -63,3 +63,9 @@
   .dock { bottom: 14px; max-width: 92vw; gap: 3px; }
   .dock a, .dock button, .dock > span:not(.dock-divider) { width: 32px; }
 }
+body.catalog-open.mobile-game-open > .dock {display:none!important;}
+@media (max-width: 600px) {
+  .dock { width:max-content;max-width:calc(100vw - 16px);bottom:calc(8px + env(safe-area-inset-bottom));height:60px;gap:2px;padding:7px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain; }
+  .dock::-webkit-scrollbar { display:none; }
+  .dock a,.dock button,.dock > span:not(.dock-divider) { width:44px;height:44px;flex:0 0 44px; }
+}

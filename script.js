@@ -184,10 +184,10 @@ if (allGamesContainer) {
         }))
         .sort((a, b) => a.popularity - b.popularity || a.originalIndex - b.originalIndex)
         .forEach(({ game }) => allGamesContainer.appendChild(game));
-    // Keep the imported CDN library together immediately after Backrooms.
+    // Keep the new browser-game collection together immediately after Backrooms.
     const backrooms = allGamesContainer.querySelector('[data-url="clbackrooms.html"]');
     if (backrooms) {
-        backrooms.after(...allGamesContainer.querySelectorAll('[data-source="tglsc"]'));
+        backrooms.after(...allGamesContainer.querySelectorAll('[data-source="curated-browser"]'));
     }
 }
 // Retain all game records for search; none are displayed as browsing cards.
@@ -206,7 +206,7 @@ function updateDockSearch() {
 
     const matches = Array.from(document.querySelectorAll('.game-launcher[data-url]:not([data-clone="true"])'))
         .map(launcher => ({ launcher, title: getGameTitleFromLauncher(launcher) }))
-        .filter(game => game.title && game.title.toLowerCase().includes(query))
+        .filter(game => game.title && game.title.toLowerCase().includes(query) && (window.kermitMobileAllowed?.(game.title)??true))
         .sort((a, b) => a.title.localeCompare(b.title))
         .slice(0, 10);
 
@@ -767,7 +767,9 @@ function initGameMeta() {
     function updateTime() {
         const now = new Date();
         const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        gameMetaEl.textContent = `${gameCount} games • ${timeStr}`;
+        const mobileMode=document.documentElement.classList.contains('mobile-mode');
+        const count=mobileMode?uniqueLaunchers.filter(card=>window.kermitMobileAllowed?.(getGameTitleFromLauncher(card))).length:gameCount;
+        gameMetaEl.textContent = `${count} ${mobileMode?'touch-friendly games':'games'} • ${timeStr}`;
     }
 
     updateTime();
@@ -798,7 +800,7 @@ if (searchInput && suggestionsContainer) {
                 launcher,
                 title: getGameTitleFromLauncher(launcher)
             }))
-            .filter(item => item.title && item.title.toLowerCase().includes(q))
+            .filter(item => item.title && item.title.toLowerCase().includes(q) && (window.kermitMobileAllowed?.(item.title)??true))
             .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }))
             .slice(0, 6);
 

@@ -1,8 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="games-document">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // Detect iPads before painting; explicit Settings choices take priority.
+        (() => {
+            let on=/iPad/i.test(navigator.userAgent)||(/Mac/i.test(navigator.platform||navigator.userAgent)&&navigator.maxTouchPoints>1);
+            try {const saved=localStorage.getItem('kermit.mobile-mode.v1');if(saved!==null)on=saved==='true';} catch {}
+            document.documentElement.classList.toggle('mobile-mode',on);
+        })();
+    </script>
+    <style>
+        html.mobile-mode .game-launcher:not([data-mobile="true"]),
+        html.mobile-mode #featured-slideshow,
+        html.mobile-mode #gallery-wrapper { display: none !important; }
+    </style>
     <title>Home</title>
     <script>if (window.parent !== window) document.documentElement.classList.add('embedded-catalog');</script>
     <link rel="icon" type="image/svg+xml" href="kermit-web-logo.svg?v=2">
@@ -11,8 +24,9 @@
     <link rel="stylesheet" href="dock.css">
     <link rel="stylesheet" href="video-background.css?v=5">
     <link rel="stylesheet" href="featured-slideshow.css?v=23">
+    <link rel="stylesheet" href="games-scrollbar.css?v=1">
     <link rel="stylesheet" href="joker-chat.css?v=1">
-<script src="background-settings.js?v=1" defer></script></head>
+<script src="background-settings.js?v=1" defer></script><link rel="stylesheet" href="site-ui.css?v=2"><script src="site-theme.js" defer></script></head>
 <body class="games-page">
     <video class="site-background-video" autoplay muted loop playsinline aria-hidden="true" tabindex="-1"><source src="background-video.mp4" type="video/mp4"></video>
     <script>if (window.parent !== window) { const video = document.querySelector('.site-background-video'); video.pause(); video.remove(); }</script>
@@ -525,7 +539,7 @@
             <div class="game-launcher cover-only" data-url="clbaldisfunnewschoolultimate.html" style='--card-image: url("cl_baldisfunnewschoolultimate.png");'>
                 <div class="cover-label">Baldi's Fun New School Ultimate</div>
             </div>
-            <div class="game-launcher cover-only" data-url="clbasketbros.html" style='--card-image: url("cl_basketbros.png");'>
+            <div class="game-launcher cover-only" data-url="clbasketbros.html" style='--card-image: url("game-covers/basketbros-uploaded.jpg");'>
                 <div class="cover-label">Basket Bros</div>
             </div>
             <div class="game-launcher cover-only" data-url="clB3313.html" style='--card-image: url("cl_b3313.png");'>
@@ -848,9 +862,9 @@
     <script>window.KERMIT_GAME_COVERS['clocarinaoftime.html'] = 'game-covers/zelda-ocarina-of-time.jpg';</script>
     <script src="imported-games.js?v=20261018-remove-hyperdrive"></script>
     <script src="imported-games-p.js?v=20261018-pyrotoad"></script>
-    <script src="tglsc-games.js?v=20261018-lazy"></script>
 <link rel="stylesheet" href="emulator-saves.css?v=2">
 <script src="emulator-saves.js?v=7"></script>
+<script src="curated-browser-games.js?v=1"></script>
 <script src="script.js?v=20261018-cdn-order"></script>
     <script src="featured-slideshow.js?v=24"></script>
     <script src="joker-finder.js?v=1"></script>

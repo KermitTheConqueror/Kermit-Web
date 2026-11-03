@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Music · Kermit Web</title><link rel="icon" href="kermit-web-logo.svg"><link rel="stylesheet" href="music.css"><link rel="stylesheet" href="video-background.css"><script src="background-settings.js" defer></script><script src="music.js" defer></script><link rel="stylesheet" href="site-ui.css?v=2"><script src="site-theme.js" defer></script></head>
+<body><link rel="stylesheet" href="music-polish.css"><div class="music-shell">
+<main><header><span class="eyebrow">KERMIT / MUSIC</span></header>
+<section class="intro"><div class="eyebrow">YOUR NEXT FAVORITE</div><h1>Find your sound.</h1><p>Your music, your space. Search Spotify or drop in a link.</p></section>
+<form id="search-form"><label class="sr-only" for="query">Song, artist, or Spotify link</label><input id="query" required maxlength="500" placeholder="Search songs, artists, or paste a Spotify link…" autocomplete="off"><button type="submit">Search / Open</button></form>
+<p id="status" role="status">Paste a Spotify track, album, or playlist link to open the official player.</p>
+<div class="workspace"><section class="library"><div class="section-heading"><h2 id="results-title">Search results</h2></div><div id="results"></div></section>
+<section class="player-panel"><div class="eyebrow">NOW PLAYING</div><h2 id="playing-title">Pick a song</h2><div id="player"><div class="empty-player"><span>♫</span><p>Your next favorite awaits.</p></div></div><button id="stop" class="quiet" hidden>Stop</button><details class="playback-details"><summary>Playback info</summary><p class="disclaimer">Powered by Spotify. Playback availability depends on your account and region.</p></details></section></div>
+<section class="recent-section" aria-labelledby="recent-title"><div class="section-heading"><h2 id="recent-title">Recently opened</h2><button id="clear" class="quiet">Clear history</button></div><div id="recent-results"></div></section>
+</main></div>
+<link rel="stylesheet" href="dock.css">
+<style>.music-shell{grid-template-columns:minmax(0,1fr)}.music-shell main{padding-bottom:120px}</style>
+<nav class="dock page-aware" aria-label="Quick navigation">
+  <a class="brand-mark" href="index.html" aria-label="Home" title="Home">K</a>
+  <a href="index.html#games" aria-label="Games" title="Games"><img class="dock-icon" src="dock-game-icon.svg" alt=""></a>
+  <a href="movies.html" aria-label="Movies" title="Movies">▤</a>
+  <a href="cloud.html" aria-label="Cloud Gaming" title="Cloud Gaming">☁</a>
+  <a href="repositories.html" aria-label="Repositories" title="GitHub Repositories">⌘</a>
+  <a href="music.html" aria-label="Music" title="Spotify Music" aria-current="page">♫</a>
+</nav>
+</body></html>
