@@ -61,6 +61,29 @@
  Object.assign(uploadedCovers, {'sms.html':'game-covers/super-mario-sunshine-uploaded.webp','castle.html':'game-covers/castle-crashers-uploaded.jpg'});
  Object.assign(uploadedCovers, {'pokerogue.html':'game-covers/pokerogue-uploaded.png'});
  Object.assign(uploadedCovers, {'md.html':'game-covers/meowdoku-uploaded.jpg'});
+ // Publisher cards use the same slug for embedded and external launches.
+ Object.assign(uploadedCovers,{
+  'bloxity-io':'game-covers/crazy-games/bloxity-io.jpg',
+  '8-ball-pool-billiards-multiplayer':'game-covers/crazy-games/8-ball-pool-billiards-multiplayer.png',
+  'bodycamera-shooter':'game-covers/crazy-games/bodycamera-shooter.webp',
+  'chicken-strike-hfm':'game-covers/crazy-games/chicken-strike-hfm.png',
+  'gun-maker':'game-covers/crazy-games/gun-maker.png',
+  'hexanaut-io':'game-covers/crazy-games/hexanaut-io.png',
+  'leek-factory-tycoon':'game-covers/crazy-games/leek-factory-tycoon.png',
+  'the-machinegg':'game-covers/crazy-games/the-machinegg.png',
+  'mine-shooter-2-noob-vs-mobs':'game-covers/crazy-games/mine-shooter-2-noob-vs-mobs.png',
+  'mini-golf-club':'game-covers/crazy-games/mini-golf-club.png',
+  'real-war-not-fake-sno':'game-covers/crazy-games/real-war-not-fake-sno.png',
+  'sky-riders-buk':'game-covers/crazy-games/sky-riders-buk.jpg',
+  'smash-karts':'game-covers/crazy-games/smash-karts.png',
+  'space-waves':'game-covers/crazy-games/space-waves.png',
+  'streamer-rise':'game-covers/crazy-games/streamer-rise.png',
+  'veck-io':'game-covers/crazy-games/veck-io.webp',
+  'bloxdhop-io':'game-covers/crazy-games/bloxdhop-io.png',
+  'clean-slate-pnn':'game-covers/crazy-games/clean-slate-pnn.png',
+  'ragdoll-archers':'game-covers/crazy-games/ragdoll-archers.png',
+  'time-shooter':'game-covers/crazy-games/time-shooter.png',
+ });
  for (const card of container.querySelectorAll('.game-launcher[data-url]')) {
   const file=card.dataset.url.split('/').pop();
   const cover=uploadedCovers[file];
