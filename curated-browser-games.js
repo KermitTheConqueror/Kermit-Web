@@ -4,6 +4,34 @@
  games.push(['sms.html','Super Mario Sunshine'],['castle.html','Castle Crashers']);
  games.push(['pokerogue.html','PokeRogue']);
  games.push(['md.html','Meowdoku']);
+ // Publisher embeds for the titles in KermitTheConqueror/Crazy-Games.
+ const publisherGames=[
+  ["8-ball-pool-billiards-multiplayer","8 Ball Pool: Billiards Multiplayer"],
+  ["bloxity-io","Bloxity.io"],
+  ["bodycamera-shooter","BodyCamera Shooter"],
+  ["chicken-strike-hfm","Chicken Strike"],
+  ["gun-maker","Gun Maker"],
+  ["hazmob-fps-online-shooter","Hazmob FPS: Online Shooter"],
+  ["hexanaut-io","Hexanaut.io"],
+  ["leek-factory-tycoon","Leek Factory Tycoon"],
+  ["the-machinegg","MachinEGG"],
+  ["mine-shooter-2-noob-vs-mobs","Mine Shooter 2: Noob vs Mobs"],
+  ["mini-golf-club","Mini Golf Club"],
+  ["real-war-not-fake-sno","Real War Not Fake"],
+  ["sky-riders-buk","Sky Riders"],
+  ["smash-karts","Smash Karts"],
+  ["space-waves","Space Waves"],
+  ["streamer-rise","Streamer Rise"],
+  ["veck-io","Veck.io"],
+  ["bloxdhop-io","Bloxd.io"],
+  ["clean-slate-pnn","Clean Slate"],
+  ["piece-of-cake-merge-and-bake","Piece of Cake: Merge and Bake"],
+  ["ragdoll-archers","Ragdoll Archers"],
+  ["shellshockersio","Shell Shockers"],
+  ["time-shooter","Time Shooter"],
+ ];
+ const publisherOnly=new Set(['gun-maker','bloxity-io','chicken-strike-hfm','the-machinegg','hazmob-fps-online-shooter','mine-shooter-2-noob-vs-mobs','real-war-not-fake-sno','veck-io','streamer-rise','clean-slate-pnn']);
+ for(const [slug,title] of publisherGames)games.push(['https://www.crazygames.com/'+(publisherOnly.has(slug)?'game/':'embed/')+slug,title]);
  const container=document.querySelector('#all-games-container');if(!container)return;
  const normalize=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
  const existing=new Set([...container.querySelectorAll('.cover-label')].map(e=>normalize(e.textContent)));
@@ -11,7 +39,7 @@
   if(file === 'clbaseballbros.html') continue;
   if(existing.has(normalize(title)))continue;
   const card=document.createElement('div');card.className='game-launcher cover-only';
-  card.dataset.url='browser-games/'+file;card.dataset.source='curated-browser';
+  card.dataset.url=file.startsWith('https://www.crazygames.com/')?file:'browser-games/'+file;card.dataset.source='curated-browser';
   card.setAttribute('aria-label','Play '+title);card.setAttribute('role','button');card.tabIndex=0;
   let hash=0;for(const c of title)hash=(hash*31+c.charCodeAt(0))>>>0;
   const hue=hash%360;
@@ -20,6 +48,11 @@
   monogram.style.cssText='position:absolute;inset:12% 0 auto;text-align:center;font-size:clamp(36px,5vw,70px);font-weight:900;color:#ffffff55;pointer-events:none;z-index:1';
   const label=document.createElement('div');label.className='cover-label';label.textContent=title;
   card.append(monogram,label);container.append(card);existing.add(normalize(title));
+  if(file.startsWith('https://www.crazygames.com/game/')){
+   card.title='Open '+title+' on CrazyGames in a new tab';
+   card.setAttribute('aria-label',card.title);
+   label.append(document.createTextNode(' ↗'));
+  }
  }
  const uploadedCovers={"clcookieclicker.html":"game-covers/cookieclicker-uploaded.webp","clcrossyroad.html":"game-covers/crossyroad-uploaded.jpg","cleggycar.html":"game-covers/eggycar-uploaded.jpg","clbouncybasketball.html":"game-covers/bouncybasketball-uploaded.jpg","clfootballbros.html":"game-covers/footballbros-uploaded.jpg","clfootballlegends.html":"game-covers/footballlegends-uploaded.jpg","clbasketbros.html":"game-covers/basketbros-uploaded.jpg","cldrivemady.html":"game-covers/drivemady-uploaded.jpg","cldriftboss.html":"game-covers/driftboss-uploaded.jpg","cldrifthuntersmerge.html":"game-covers/drifthuntersmerge-uploaded.jpg","clescaperoad.html":"game-covers/escaperoad-uploaded.jpg","clcrazycars.html":"game-covers/crazycars-uploaded.jpg","clcrazymotorcycle.html":"game-covers/crazymotorcycle-uploaded.jpg","clcrazyplanelanding.html":"game-covers/crazyplanelanding-uploaded.jpg","clblazedrifter.html":"game-covers/blazedrifter-uploaded.jpg","clblumgiracers.html":"game-covers/blumgiracers-uploaded.jpg","clbouncymotors.html":"game-covers/bouncymotors-uploaded.png","clblockydemolitionderby.html":"game-covers/blockydemolitionderby-uploaded.jpg","clcardrawing.html":"game-covers/cardrawing-uploaded.png","clcarkingarena.html":"game-covers/carkingarena-uploaded.jpg","clcarrampvspolicechase.html":"game-covers/carrampvspolicechase-uploaded.jpg","cldeadlydescent.html":"game-covers/deadlydescent-uploaded.jpg","cldemolitionderbycrashracing.html":"game-covers/demolitionderbycrashracing-uploaded.jpg","clhighwayracer2.html":"game-covers/highwayracer2-uploaded.jpg","clhoverracerdrive.html":"game-covers/hoverracerdrive-uploaded.jpg","cl234playergame.html":"game-covers/234playergame-uploaded.png"};
  Object.assign(uploadedCovers, {"clarcheryworldtour.html":"game-covers/archeryworldtour-uploaded.jpg","clarcadevolley.html":"game-covers/arcadevolley-uploaded.jpg","clasmallworldcup.html":"game-covers/asmallworldcup-uploaded.jpg","clboxingrandom.html":"game-covers/boxingrandom-uploaded.jpg","clgetawayshootout.html":"game-covers/getawayshootout-uploaded.jpg","clgetontop.html":"game-covers/getontop-uploaded.jpg","clgolfbattle.html":"game-covers/golfbattle-uploaded.jpg","clhouseofhazards.html":"game-covers/houseofhazards-uploaded.jpg","cl10minutestildawn.html":"game-covers/10minutestildawn-uploaded.webp","clbaconmaydie.html":"game-covers/baconmaydie-uploaded.jpg","clballblast.html":"game-covers/ballblast-uploaded.jpg","clbearsus.html":"game-covers/bearsus-uploaded.jpg","clbitplanes.html":"game-covers/bitplanes-uploaded.jpg","clblockpost.html":"game-covers/blockpost-uploaded.jpg","clbouncemasters.html":"game-covers/bouncemasters-uploaded.jpg","clburritobisonlaunchalibre.html":"game-covers/burritobisonlaunchalibre-uploaded.jpg","clcannonballs3d.html":"game-covers/cannonballs3d-uploaded.jpg","clcastlewarsmodern.html":"game-covers/castlewarsmodern-uploaded.jpg","clcheesechompers3d.html":"game-covers/cheesechompers3d-uploaded.jpg","clgladdihoppers.html":"game-covers/gladdihoppers-uploaded.jpg","clgun-spin.html":"game-covers/gun-spin-uploaded.jpg","clfortzone.html":"game-covers/fortzone-uploaded.jpg","clbigflappytowertinysquare.html":"game-covers/bigflappytowertinysquare-uploaded.jpg"});

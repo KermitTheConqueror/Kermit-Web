@@ -305,6 +305,10 @@ function getLauncherCover(launcher) {
 }
 
 function openGamePlayer(initialLauncher) {
+    if(/^https:\/\/www\.crazygames\.com\/game\/[a-z0-9-]+$/.test(initialLauncher.dataset.url)){
+        window.open(initialLauncher.dataset.url,'_blank','noopener,noreferrer');
+        return;
+    }
     document.querySelector('.game-player-page')?.remove();
     const page = document.createElement('section');
     page.className = 'game-player-page';
