@@ -31,6 +31,8 @@ window.addEventListener('message',event=>{
  window.dispatchEvent(new Event('kermit-music-audio-change'));
 });
 const shortsFrame=document.createElement('iframe');
+const aiFrame=document.createElement('iframe');
+aiFrame.id='ai-frame';aiFrame.title='Kermit AI chat';aiFrame.style.display='none';catalogShell.append(aiFrame);
 shortsFrame.id='shorts-frame';shortsFrame.title='Kermit Web Shorts';shortsFrame.style.display='none';shortsFrame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';catalogShell.append(shortsFrame);
 musicFrame.id='music-frame';musicFrame.title='Kermit Web music';musicFrame.style.display='none';musicFrame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';catalogShell.append(musicFrame);
 const sectionLoader = document.createElement('div');
@@ -50,7 +52,7 @@ function showSectionLoader(frame,title){
   },15000);
 }
 sectionLoader.querySelector('button').onclick=()=>{sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);};
-[catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame].forEach(frame=>frame.addEventListener('load',()=>{
+[catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame,aiFrame].forEach(frame=>frame.addEventListener('load',()=>{
   if(!frame.getAttribute('src'))return;
   frame.dataset.loaded='true';
   if(loadingFrame===frame){sectionLoader.hidden=true;clearTimeout(sectionLoadTimeout);}
@@ -78,20 +80,21 @@ function openCatalog(destination = 'games.html') {
   const isMusic = url.pathname.endsWith('/music.html');
   const isShorts = url.pathname.endsWith('/shorts.html');
   pageDock.style.display='';
-  const frame = isShorts ? shortsFrame : isMusic ? musicFrame : isRepos ? reposFrame : isCloud ? cloudFrame : isMovies ? moviesFrame : catalogFrame;
-  highlightPage(isShorts ? 'Shorts' : isMusic ? 'Music' : isRepos ? 'Repositories' : isCloud ? 'Cloud Gaming' : isMovies ? 'Movies' : 'Games');
+  const isAI=url.pathname.endsWith('/ai.html');
+  const frame = isAI ? aiFrame : isShorts ? shortsFrame : isMusic ? musicFrame : isRepos ? reposFrame : isCloud ? cloudFrame : isMovies ? moviesFrame : catalogFrame;
+  highlightPage(isAI ? 'AI' : isShorts ? 'Shorts' : isMusic ? 'Music' : isRepos ? 'Repositories' : isCloud ? 'Cloud Gaming' : isMovies ? 'Movies' : 'Games');
   stopGamesBeforeLeaving(frame);
   const currentSource = frame.getAttribute('src');
   const needsNavigation=!currentSource || (url.searchParams.has('launch') && new URL(currentSource, location.href).href !== url.href);
   if(needsNavigation)delete frame.dataset.loaded;
-  showSectionLoader(frame,isShorts?'Shorts':isMusic?'Music':isRepos?'Repositories':isCloud?'Cloud Gaming':isMovies?'Movies & Shows':'Games');
+  showSectionLoader(frame,isAI?'AI':isShorts?'Shorts':isMusic?'Music':isRepos?'Repositories':isCloud?'Cloud Gaming':isMovies?'Movies & Shows':'Games');
   // Keep each page alive; only an explicit game launch may change its URL.
   if (needsNavigation) frame.src = isCloud ? cloudCatalogUrl : url.href;
-  [catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame].forEach(item=>{item.style.display=item===frame?'block':'none';});
+  [catalogFrame,moviesFrame,cloudFrame,reposFrame,musicFrame,shortsFrame,aiFrame].forEach(item=>{item.style.display=item===frame?'block':'none';});
   catalogShell.hidden = false;
   document.body.classList.add('catalog-open');
   document.body.style.overflow = 'hidden';
-  history.replaceState({ catalogOpen: true }, '', isShorts?'#shorts':isMusic?'#music':isRepos?'#repositories':isCloud?'#cloud':isMovies?'#movies':'#games');
+  history.replaceState({ catalogOpen: true }, '', isAI?'#ai':isShorts?'#shorts':isMusic?'#music':isRepos?'#repositories':isCloud?'#cloud':isMovies?'#movies':'#games');
 }
 
 function closeCatalog() {
@@ -116,7 +119,7 @@ function stopGamesBeforeLeaving(nextFrame) {
   }
 }
 
-document.querySelectorAll('a[href^="games.html"]:not(.dock-search), a[href="movies.html"], a[href="cloud.html"], a[href="repositories.html"], a[href="music.html"], a[href="shorts.html"]').forEach(link => {
+document.querySelectorAll('a[href^="games.html"]:not(.dock-search), a[href="movies.html"], a[href="cloud.html"], a[href="repositories.html"], a[href="music.html"], a[href="shorts.html"], a[href="ai.html"]').forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault();
     openCatalog(link.getAttribute('href'));
@@ -142,6 +145,7 @@ window.addEventListener('message', event => {
   if (event.data?.type === 'kermit-search') toggleSiteSearch();
 });
 if (location.hash === '#games') openCatalog('games.html');
+if (location.hash === '#ai') openCatalog('ai.html');
 if (location.hash === '#movies') openCatalog('movies.html');
 if (location.hash === '#cloud') openCatalog('cloud.html');
 if (location.hash === '#repositories') openCatalog('repositories.html');
